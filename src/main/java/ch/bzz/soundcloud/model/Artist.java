@@ -11,6 +11,7 @@ public class Artist {
     private List<Lied> lieder;
     private String vorname;
     private String nachname;
+    private String telNr;
     private Integer anzahlLieder;
 
     public List<Lied> getLieder() {
@@ -35,6 +36,14 @@ public class Artist {
 
     public void setNachname(String nachname) {
         this.nachname = nachname;
+    }
+
+    public String getTelNr() {
+        return telNr;
+    }
+
+    public void setTelNr(String telNr) {
+        this.telNr = telNr;
     }
 
     public Integer getAnzahlLieder() {

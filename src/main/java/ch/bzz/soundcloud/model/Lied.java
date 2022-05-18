@@ -9,6 +9,7 @@ import java.time.LocalDate;
 public class Lied {
 
     private String titel;
+    private Genre genre;
     private LocalDate hochladeDatum;
 
     public String getTitel() {
@@ -19,6 +20,14 @@ public class Lied {
         this.titel = titel;
     }
 
+    public Genre getGenre() {
+        return genre;
+    }
+
+    public void setGenre(Genre genre) {
+        this.genre = genre;
+    }
+
     public LocalDate getHochladeDatum() {
         return hochladeDatum;
     }
@@ -26,4 +35,5 @@ public class Lied {
     public void setHochladeDatum(LocalDate hochladeDatum) {
         this.hochladeDatum = hochladeDatum;
     }
+
 }
