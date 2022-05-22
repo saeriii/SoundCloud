@@ -1,0 +1,30 @@
+[
+  {
+    "artistUUID": "ecd86148-5341-43c6-81ed-f3f4595965dc",
+    "vorname": "Kendrick Lamar",
+    "nachanme": "Duckworth",
+    "telNr": "+1(855) 444-8888",
+    "anzahlLieder": 65
+  },
+  {
+    "artistUUID": "db117daa-e295-4597-abcd-a69496797dc0",
+    "vorname": "Aaliyah",
+    "nachanme": "Haughton",
+    "telNr": "+1(425) 876-8888",
+    "anzahlLieder": 26
+  },
+  {
+    "artistUUID": "c746a291-0ef9-4b2a-8268-392b12d636bd",
+    "vorname": "Kehlani",
+    "nachanme": "Parrish",
+    "telNr": "+1(510) 692-4419",
+    "anzahlLieder": 70
+  },
+  {
+    "artistUUID": "73bd4187-a5b7-4864-be79-327bb8ed43bf",
+    "vorname": "Anderson",
+    "nachanme": "Paak",
+    "telNr": "+41 79 604 48 123",
+    "anzahlLieder": 18
+  }
+]
