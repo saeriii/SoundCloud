@@ -8,9 +8,18 @@ import java.time.LocalDate;
 
 public class Lied {
 
+    private String liedUUID;
     private String titel;
     private Genre genre;
     private LocalDate hochladeDatum;
+
+    public String getLiedUUID() {
+        return liedUUID;
+    }
+
+    public void setLiedUUID(String liedUUID) {
+        this.liedUUID = liedUUID;
+    }
 
     public String getTitel() {
         return titel;

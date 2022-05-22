@@ -2,8 +2,17 @@ package ch.bzz.soundcloud.model;
 
 public class Genre {
 
+    private String genreUUID;
     private String genre;
     private Integer popularity;
+
+    public String getGenreUUID() {
+        return genreUUID;
+    }
+
+    public void setGenreUUID(String genreUUID) {
+        this.genreUUID = genreUUID;
+    }
 
     public String getGenre() {
         return genre;

@@ -8,11 +8,20 @@ import java.util.List;
 
 public class Artist {
 
+    private String artistUUID;
     private List<Lied> lieder;
     private String vorname;
     private String nachname;
     private String telNr;
     private Integer anzahlLieder;
+
+    public String getArtistUUID() {
+        return artistUUID;
+    }
+
+    public void setArtistUUID(String artistUUID) {
+        this.artistUUID = artistUUID;
+    }
 
     public List<Lied> getLieder() {
         return lieder;
@@ -54,3 +63,4 @@ public class Artist {
         this.anzahlLieder = anzahlLieder;
     }
 }
+

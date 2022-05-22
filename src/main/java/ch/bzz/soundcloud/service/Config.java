@@ -16,7 +16,7 @@ import java.util.Set;
 @ApplicationPath("/resource")
 
 public class Config extends Application {
-    private static final String PROPERTIES_PATH = "/home/bzz/webapp/liedList.properties";
+    private static final String PROPERTIES_PATH = "/home/bzz/IdeaProjects/SoundCloud/testing/genre.json/liedList.properties";
     private static Properties properties = null;
 
     /**
@@ -28,6 +28,9 @@ public class Config extends Application {
     public Set<Class<?>> getClasses() {
         HashSet providers = new HashSet<Class<?>>();
         providers.add(TestService.class);
+        providers.add(ArtistService.class);
+        providers.add(LiedService.class);
+        providers.add(GenreService.class);
         return providers;
     }
 
