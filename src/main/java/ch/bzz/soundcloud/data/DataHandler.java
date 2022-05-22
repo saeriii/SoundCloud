@@ -49,7 +49,7 @@ public class DataHandler {
      * reads all lieder
      * @return list of lieder
      */
-    public List<Lied> readAllLied() {
+    public List<Lied> readAllLieder() {
         return getLiedList();
     }
 
@@ -60,7 +60,7 @@ public class DataHandler {
      */
     public Lied readLiedByUUID(String liedUUID) {
         Lied lied = null;
-        for (Lied entry : getBookList()) {
+        for (Lied entry : getLiedList()) {
             if (entry.getLiedUUID().equals(liedUUID)) {
                 lied = entry;
             }
@@ -69,42 +69,66 @@ public class DataHandler {
     }
 
     /**
-     * reads all Publishers
-     * @return list of publishers
+     * reads all artists
+     * @return list of artists
      */
-    public List<Publisher> readAllPublishers() {
+    public List<Artist> readAllArtists() {
 
-        return getPublisherList();
+        return getArtistList();
     }
 
     /**
-     * reads a publisher by its uuid
-     * @param publisherUUID
-     * @return the Publisher (null=not found)
+     * reads an artist by its uuid
+     * @param artistUUID
+     * @return the Artist (null=not found)
      */
-    public Publisher readPublisherByUUID(String publisherUUID) {
-        Publisher publisher = null;
-        for (Publisher entry : getPublisherList()) {
-            if (entry.getPublisherUUID().equals(publisherUUID)) {
-                publisher = entry;
+    public Artist readPublisherByUUID(String artistUUID) {
+        Artist artist = null;
+        for (Artist entry : getArtistList()) {
+            if (entry.getArtistUUID().equals(artistUUID)) {
+                artist = entry;
             }
         }
-        return publisher;
+        return artist;
     }
 
     /**
-     * reads the books from the JSON-file
+     * reads all genres
+     * @return list of genres
      */
-    private void readBookJSON() {
+    public List<Genre> readAllGenres() {
+
+        return getGenreList();
+    }
+
+    /**
+     * reads a genre by its uuid
+     * @param genreUUID
+     * @return the Genre (null=not found)
+     */
+    public Genre readGenrebyUUID(String genreUUID) {
+        Genre genre = null;
+        for (Genre entry : getGenreList()) {
+            if (entry.getGenreUUID().equals(genreUUID)) {
+                genre = entry;
+            }
+        }
+        return genre;
+    }
+
+    /**
+     * reads the lieder from the JSON-file
+     */
+    private void readLiedJSON() {
         try {
-            String path = Config.getProperty("bookJSON");
+            String path = Config.getProperty("liedJSON");
             byte[] jsonData = Files.readAllBytes(
                     Paths.get(path)
             );
             ObjectMapper objectMapper = new ObjectMapper();
-            Book[] books = objectMapper.readValue(jsonData, Book[].class);
-            for (Book book : books) {
-                getBookList().add(book);
+            Lied[] lieder = objectMapper.readValue(jsonData, Lied[].class);
+            for (Lied lied : lieder) {
+                getLiedList().add(lied);
             }
         } catch (IOException ex) {
             ex.printStackTrace();
@@ -112,58 +136,97 @@ public class DataHandler {
     }
 
     /**
-     * reads the publishers from the JSON-file
+     * reads the artists from the JSON-file
      */
-    private void readPublisherJSON() {
+    private void readArtistJSON() {
         try {
             byte[] jsonData = Files.readAllBytes(
                     Paths.get(
-                            Config.getProperty("publisherJSON")
+                            Config.getProperty("artistJSON")
                     )
             );
             ObjectMapper objectMapper = new ObjectMapper();
-            Publisher[] publishers = objectMapper.readValue(jsonData, Publisher[].class);
-            for (Publisher publisher : publishers) {
-                getPublisherList().add(publisher);
+            Artist[] artists = objectMapper.readValue(jsonData, Artist[].class);
+            for (Artist artist : artists) {
+                getArtistList().add(artist);
             }
         } catch (IOException ex) {
             ex.printStackTrace();
         }
     }
+
+    /**
+     * reads the genre from the JSON-file
+     */
+    private void readGenreJSON() {
+        try {
+            byte[] jsonData = Files.readAllBytes(
+                    Paths.get(
+                            Config.getProperty("genreJSON")
+                    )
+            );
+            ObjectMapper objectMapper = new ObjectMapper();
+            Genre[] genres = objectMapper.readValue(jsonData, Genre[].class);
+            for (Genre genre : genres) {
+                getGenreList().add(genre);
+            }
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+    }
+
     /**
      * gets bookList
      *
-     * @return value of bookList
+     * @return value of liedList
      */
-    private List<Book> getBookList() {
-        return bookList;
+    private List<Lied> getLiedList() {
+        return liedList;
     }
 
     /**
-     * sets bookList
+     * sets liedList
      *
-     * @param bookList the value to set
+     * @param liedList the value to set
      */
-    private void setBookList(List<Book> bookList) {
-        this.bookList = bookList;
+    private void setLiedList(List<Lied> liedList) {
+        this.liedList = liedList;
     }
 
     /**
-     * gets publisherList
+     * gets artistList
      *
-     * @return value of publisherList
+     * @return value of artistList
      */
-    private List<Publisher> getPublisherList() {
-        return publisherList;
+    private List<Artist> getArtistList() {
+        return artistList;
     }
 
     /**
-     * sets publisherList
+     * sets artistList
      *
-     * @param publisherList the value to set
+     * @param artistList the value to set
      */
-    private void setPublisherList(List<Publisher> publisherList) {
-        this.publisherList = publisherList;
+    private void setArtistList(List<Artist> artistList) {
+        this.artistList = artistList;
+    }
+
+    /**
+     * gets genreList
+     *
+     * @return value of genreList
+     */
+    private List<Genre> getGenreList() {
+        return genreList;
+    }
+
+    /**
+     * sets genreList
+     *
+     * @param genreList the value to set
+     */
+    private void setGenreList(List<Genre> genreList) {
+        this.genreList = genreList;
     }
 
 
