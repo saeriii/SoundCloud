@@ -46,17 +46,17 @@ public class DataHandler {
 
 
     /**
-     * reads all lieder
-     * @return list of lieder
+     * reads all Lieder
+     * @return list of Lieder
      */
     public List<Lied> readAllLieder() {
         return getLiedList();
     }
 
     /**
-     * reads a lied by its uuid
+     * reads a Lied by its uuid
      * @param liedUUID
-     * @return the lied (null=not found)
+     * @return the Lied (null=not found)
      */
     public Lied readLiedByUUID(String liedUUID) {
         Lied lied = null;
@@ -73,7 +73,6 @@ public class DataHandler {
      * @return list of artists
      */
     public List<Artist> readAllArtists() {
-
         return getArtistList();
     }
 
@@ -82,7 +81,7 @@ public class DataHandler {
      * @param artistUUID
      * @return the Artist (null=not found)
      */
-    public Artist readPublisherByUUID(String artistUUID) {
+    public Artist readArtistByUUID(String artistUUID) {
         Artist artist = null;
         for (Artist entry : getArtistList()) {
             if (entry.getArtistUUID().equals(artistUUID)) {
@@ -117,7 +116,7 @@ public class DataHandler {
     }
 
     /**
-     * reads the lieder from the JSON-file
+     * reads the Lieder from the JSON-file
      */
     private void readLiedJSON() {
         try {
@@ -176,7 +175,7 @@ public class DataHandler {
     }
 
     /**
-     * gets bookList
+     * gets liedList
      *
      * @return value of liedList
      */

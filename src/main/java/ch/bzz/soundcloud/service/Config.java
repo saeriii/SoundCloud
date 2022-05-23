@@ -16,7 +16,7 @@ import java.util.Set;
 @ApplicationPath("/resource")
 
 public class Config extends Application {
-    private static final String PROPERTIES_PATH = "/home/bzz/IdeaProjects/SoundCloud/testing/genre.json/liedList.properties";
+    private static final String PROPERTIES_PATH = "/home/bzz/webapp/liedList.properties";
     private static Properties properties = null;
 
     /**

@@ -62,5 +62,6 @@ public class Artist {
     public void setAnzahlLieder(Integer anzahlLieder) {
         this.anzahlLieder = anzahlLieder;
     }
+
 }
 

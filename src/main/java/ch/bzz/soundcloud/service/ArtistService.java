@@ -13,11 +13,11 @@ package ch.bzz.soundcloud.service;
 @Path("artist")
 public class ArtistService {
 
-    @Path("list")
     @GET
+    @Path("list")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response() {
-        List<Artist> artistList = DataHandler.getInstance().readAllBooks();
+    public Response listArtists() {
+        List<Artist> artistList = DataHandler.getInstance().readAllArtists();
         return Response
                 .status(200)
                 .entity(artistList)
