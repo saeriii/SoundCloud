@@ -17,7 +17,7 @@ public class Lied {
     private String titel;
     private Genre genre;
 
-    //@JsonFormat(pattern = "yyyy-MM-dd")
+    //@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     private LocalDate hochladedatum;
 
     /**
