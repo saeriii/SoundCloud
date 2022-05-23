@@ -121,12 +121,12 @@ public class DataHandler {
      */
     private void readLiedJSON() {
         try {
-            String path = Config.getProperty("liedJSON");
             byte[] jsonData = Files.readAllBytes(
-                    Paths.get(path)
+                    Paths.get(
+                            Config.getProperty("liedJSON")
+                    )
             );
             ObjectMapper objectMapper = new ObjectMapper();
-            objectMapper.registerModule(new JavaTimeModule());
             Lied[] lieder = objectMapper.readValue(jsonData, Lied[].class);
             for (Lied lied : lieder) {
                 getLiedList().add(lied);

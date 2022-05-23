@@ -1,8 +1,6 @@
 package ch.bzz.soundcloud.model;
 
-import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import ch.bzz.soundcloud.data.DataHandler;
 
 import java.time.LocalDate;
 
@@ -16,8 +14,6 @@ public class Lied {
     private String liedUUID;
     private String titel;
     private Genre genre;
-
-    //@JsonFormat(shape = JsonFormat.Shape.STRING, pattern = "yyyy-MM-dd")
     private LocalDate hochladedatum;
 
     /**
