@@ -1,0 +1,238 @@
+{
+	"id": "59cd0782-484e-459e-b9ba-23e3f08cd551",
+	"name": "SoundCloud",
+	"timestamp": "2022-05-23T21:32:41.878Z",
+	"collection_id": "0-c6cd1976-3654-4e1b-92ca-d5b06459fe9a",
+	"folder_id": 0,
+	"environment_id": "0",
+	"totalPass": 0,
+	"totalFail": 0,
+	"results": [
+		{
+			"id": "16badd4d-b2fa-4352-b2c7-1c6950ef2456",
+			"name": "0.1 Testservice",
+			"url": "http://localhost:8080/SoundCloud-1.0/resource/test/test",
+			"time": 146,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				146
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "58b36c39-67bf-4293-9359-9b84d9715d0a",
+			"name": "Lied Liste",
+			"url": "http://localhost:8080/SoundCloud-1.0/resource/lied/list",
+			"time": 50,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				50
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "feec363a-b593-4ad0-ad26-7cf734f7ec14",
+			"name": "Genre List",
+			"url": "http://localhost:8080/SoundCloud-1.0/resource/genre/list",
+			"time": 275,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				275
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "558fe1d4-8f96-4af1-b0e9-79ae6bc58467",
+			"name": "Artist List",
+			"url": "http://localhost:8080/SoundCloud-1.0/resource/artist/list",
+			"time": 61,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				61
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "57e6ce71-1121-4a27-bcd6-7a0707f6fe86",
+			"name": "Lied read",
+			"url": "http://localhost:8080/SoundCloud-1.0/resource/lied/read?uuid=3247c340-c712-402e-b400-0a23a9368c97",
+			"time": 63,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				63
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "2c231452-7aa5-4445-9d11-f95ce6f39264",
+			"name": "Genre read",
+			"url": "http://localhost:8080/SoundCloud-1.0/resource/genre/read?uuid=cab86148-5341-43c6-sfed-f3f459591hip",
+			"time": 25,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				25
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "13349468-1eba-46a0-9da1-06a470a16ca0",
+			"name": "Artist read",
+			"url": "http://localhost:8080/SoundCloud-1.0/resource/artist/read?uuid=ecd86148-5341-43c6-81ed-f3f4595965dc",
+			"time": 20,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				20
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "4aa33097-fc80-44ce-9756-f289a683ee1a",
+			"name": "Lied read invalid",
+			"url": "http://localhost:8080/SoundCloud-1.0/resource/lied/read?uuid=ecd86148",
+			"time": 25,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				25
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "d647e487-7c00-4f68-ab3f-b6733ad0bbaa",
+			"name": "Genre read invalid",
+			"url": "http://localhost:8080/SoundCloud-1.0/resource/genre/read?uuid=ecd86148",
+			"time": 21,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				21
+			],
+			"allTests": [
+				{}
+			]
+		},
+		{
+			"id": "ec838bd0-a47e-4958-9a0c-36dbbdc5c62e",
+			"name": "Artist read invalid",
+			"url": "http://localhost:8080/SoundCloud-1.0/resource/artist/read?uuid=ecd86148",
+			"time": 47,
+			"responseCode": {
+				"code": 200,
+				"name": "OK"
+			},
+			"tests": {},
+			"testPassFailCounts": {},
+			"times": [
+				47
+			],
+			"allTests": [
+				{}
+			]
+		}
+	],
+	"count": 1,
+	"totalTime": 733,
+	"collection": {
+		"requests": [
+			{
+				"id": "16badd4d-b2fa-4352-b2c7-1c6950ef2456",
+				"method": "GET"
+			},
+			{
+				"id": "58b36c39-67bf-4293-9359-9b84d9715d0a",
+				"method": "GET"
+			},
+			{
+				"id": "feec363a-b593-4ad0-ad26-7cf734f7ec14",
+				"method": "GET"
+			},
+			{
+				"id": "558fe1d4-8f96-4af1-b0e9-79ae6bc58467",
+				"method": "GET"
+			},
+			{
+				"id": "57e6ce71-1121-4a27-bcd6-7a0707f6fe86",
+				"method": "GET"
+			},
+			{
+				"id": "2c231452-7aa5-4445-9d11-f95ce6f39264",
+				"method": "GET"
+			},
+			{
+				"id": "13349468-1eba-46a0-9da1-06a470a16ca0",
+				"method": "GET"
+			},
+			{
+				"id": "4aa33097-fc80-44ce-9756-f289a683ee1a",
+				"method": "GET"
+			},
+			{
+				"id": "d647e487-7c00-4f68-ab3f-b6733ad0bbaa",
+				"method": "GET"
+			},
+			{
+				"id": "ec838bd0-a47e-4958-9a0c-36dbbdc5c62e",
+				"method": "GET"
+			}
+		]
+	}
+}
