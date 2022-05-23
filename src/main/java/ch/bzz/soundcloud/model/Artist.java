@@ -25,7 +25,7 @@ public class Artist {
     }
 
     /**
-     * gets artistUUID
+     * sets artistUUID
      *
      * @param artistUUID the value to set
      */
@@ -43,7 +43,7 @@ public class Artist {
     }
 
     /**
-     * gets lieder
+     * sets lieder
      *
      * @param lieder the value to set
      */
@@ -61,7 +61,7 @@ public class Artist {
     }
 
     /**
-     * gets vorname
+     * sets vorname
      *
      * @param vorname the value to set
      */
@@ -79,7 +79,7 @@ public class Artist {
     }
 
     /**
-     * gets nachname
+     * sets nachname
      *
      * @param nachname the value to set
      */
@@ -97,7 +97,7 @@ public class Artist {
     }
 
     /**
-     * gets telNr
+     * sets telNr
      *
      * @param telNr the value to set
      */
@@ -115,7 +115,7 @@ public class Artist {
     }
 
     /**
-     * gets anzahlLieder
+     * sets anzahlLieder
      *
      * @param anzahlLieder the value to set
      */

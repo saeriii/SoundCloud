@@ -16,7 +16,7 @@ public class Genre {
     }
 
     /**
-     * gets genreUUID
+     * sets genreUUID
      *
      * @param genreUUID the value to set
      */
@@ -34,7 +34,7 @@ public class Genre {
     }
 
     /**
-     * gets genre
+     * sets genre
      *
      * @param genre the value to set
      */
@@ -52,12 +52,11 @@ public class Genre {
     }
 
     /**
-     * gets popularity
+     * sets popularity
      *
      * @param popularity the value to set
      */
     public void setPopularity(Integer popularity) {
         this.popularity = popularity;
     }
-
 }

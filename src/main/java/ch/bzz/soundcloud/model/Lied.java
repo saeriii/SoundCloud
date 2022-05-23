@@ -12,33 +12,13 @@ import java.time.LocalDate;
 
 public class Lied {
 
-    @JsonIgnore
     private Artist artist;
-
     private String liedUUID;
     private String titel;
     private Genre genre;
 
     //@JsonFormat(pattern = "yyyy-MM-dd")
     private LocalDate hochladedatum;
-
-    /**
-     * gets the artistUUID from the Artist-object
-     * @return
-     */
-    public String getArtistUUID() {
-        return getArtist().getArtistUUID();
-    }
-
-    /**
-    public void setArtistUUID(String artistUUID) {
-        setArtist(new Artist());
-        Artist artist = DataHandler.getInstance().readArtistByUUID(artistUUID);
-        getArtist().setArtistUUID(artistUUID);
-        getArtist().setArtist(artist.getArtist());
-
-    }
-     */
 
     /**
      * gets artist
@@ -50,7 +30,7 @@ public class Lied {
     }
 
     /**
-     * gets artist
+     * sets artist
      *
      * @param artist the value to set
      */
@@ -68,7 +48,7 @@ public class Lied {
     }
 
     /**
-     * gets liedUUID
+     * sets liedUUID
      *
      * @param liedUUID the value to set
      */
@@ -86,7 +66,7 @@ public class Lied {
     }
 
     /**
-     * gets titel
+     * sets titel
      *
      * @param titel the value to set
      */
@@ -104,7 +84,7 @@ public class Lied {
     }
 
     /**
-     * gets genre
+     * sets genre
      *
      * @param genre the value to set
      */
@@ -122,12 +102,11 @@ public class Lied {
     }
 
     /**
-     * gets hochladedatum
+     * sets hochladedatum
      *
      * @param hochladedatum the value to set
      */
     public void setHochladedatum(LocalDate hochladedatum) {
         this.hochladedatum = hochladedatum;
     }
-
 }
