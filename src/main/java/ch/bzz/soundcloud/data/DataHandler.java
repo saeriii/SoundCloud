@@ -6,7 +6,9 @@ import ch.bzz.soundcloud.model.Genre;
 import ch.bzz.soundcloud.service.Config;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.google.inject.Singleton;
 
+import javax.xml.crypto.Data;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
@@ -16,29 +18,24 @@ import java.util.List;
 /**
  * reads and writes the data in the JSON-files
  */
+@Singleton
 public class DataHandler {
-    private static DataHandler instance = null;
-    private List<Lied> liedList;
-    private List<Artist> artistList;
-    private List<Genre> genreList;
+    private static DataHandler instance;
+    private static List<Lied> liedList;
+    private static List<Artist> artistList;
+    private static List<Genre> genreList;
 
     /**
      * private constructor defeats instantiation
      */
     private DataHandler() {
-        setLiedList(new ArrayList<>());
-        readLiedJSON();
-        setArtistList(new ArrayList<>());
-        readArtistJSON();
-        setGenreList(new ArrayList<>());
-        readGenreJSON();
     }
 
     /**
      * gets the only instance of this class
      * @return
      */
-    public static DataHandler getInstance() {
+    public synchronized static DataHandler getInstance() {
         if (instance == null)
             instance = new DataHandler();
         return instance;
@@ -49,7 +46,7 @@ public class DataHandler {
      * reads all Lieder
      * @return list of Lieder
      */
-    public List<Lied> readAllLieder() {
+    public static List<Lied> readAllLieder() {
         return getLiedList();
     }
 
@@ -58,7 +55,7 @@ public class DataHandler {
      * @param liedUUID
      * @return the Lied (null=not found)
      */
-    public Lied readLiedByUUID(String liedUUID) {
+    public static Lied readLiedByUUID(String liedUUID) {
         Lied lied = null;
         for (Lied entry : getLiedList()) {
             if (entry.getLiedUUID().equals(liedUUID)) {
@@ -72,7 +69,7 @@ public class DataHandler {
      * reads all artists
      * @return list of artists
      */
-    public List<Artist> readAllArtists() {
+    public static List<Artist> readAllArtists() {
         return getArtistList();
     }
 
@@ -81,7 +78,7 @@ public class DataHandler {
      * @param artistUUID
      * @return the Artist (null=not found)
      */
-    public Artist readArtistByUUID(String artistUUID) {
+    public static Artist readArtistByUUID(String artistUUID) {
         Artist artist = null;
         for (Artist entry : getArtistList()) {
             if (entry.getArtistUUID().equals(artistUUID)) {
@@ -95,7 +92,7 @@ public class DataHandler {
      * reads all genres
      * @return list of genres
      */
-    public List<Genre> readAllGenres() {
+    public static List<Genre> readAllGenres() {
 
         return getGenreList();
     }
@@ -105,7 +102,7 @@ public class DataHandler {
      * @param genreUUID
      * @return the Genre (null=not found)
      */
-    public Genre readGenrebyUUID(String genreUUID) {
+    public static Genre readGenrebyUUID(String genreUUID) {
         Genre genre = null;
         for (Genre entry : getGenreList()) {
             if (entry.getGenreUUID().equals(genreUUID)) {
@@ -118,7 +115,7 @@ public class DataHandler {
     /**
      * reads the Lieder from the JSON-file
      */
-    private void readLiedJSON() {
+    private static void readLiedJSON() {
         try {
             byte[] jsonData = Files.readAllBytes(
                     Paths.get(
@@ -138,7 +135,7 @@ public class DataHandler {
     /**
      * reads the artists from the JSON-file
      */
-    private void readArtistJSON() {
+    private static void readArtistJSON() {
         try {
             byte[] jsonData = Files.readAllBytes(
                     Paths.get(
@@ -158,7 +155,7 @@ public class DataHandler {
     /**
      * reads the genre from the JSON-file
      */
-    private void readGenreJSON() {
+    private static void readGenreJSON() {
         try {
             byte[] jsonData = Files.readAllBytes(
                     Paths.get(
@@ -180,7 +177,7 @@ public class DataHandler {
      *
      * @return value of liedList
      */
-    private List<Lied> getLiedList() {
+    private static List<Lied> getLiedList() {
         return liedList;
     }
 
@@ -189,8 +186,8 @@ public class DataHandler {
      *
      * @param liedList the value to set
      */
-    private void setLiedList(List<Lied> liedList) {
-        this.liedList = liedList;
+    private static void setLiedList(List<Lied> liedList) {
+        DataHandler.liedList = liedList;
     }
 
     /**
@@ -198,7 +195,7 @@ public class DataHandler {
      *
      * @return value of artistList
      */
-    private List<Artist> getArtistList() {
+    private static List<Artist> getArtistList() {
         return artistList;
     }
 
@@ -207,8 +204,8 @@ public class DataHandler {
      *
      * @param artistList the value to set
      */
-    private void setArtistList(List<Artist> artistList) {
-        this.artistList = artistList;
+    private static void setArtistList(List<Artist> artistList) {
+        DataHandler.artistList = artistList;
     }
 
     /**
@@ -216,7 +213,7 @@ public class DataHandler {
      *
      * @return value of genreList
      */
-    private List<Genre> getGenreList() {
+    private static List<Genre> getGenreList() {
         return genreList;
     }
 
@@ -225,8 +222,8 @@ public class DataHandler {
      *
      * @param genreList the value to set
      */
-    private void setGenreList(List<Genre> genreList) {
-        this.genreList = genreList;
+    private static void setGenreList(List<Genre> genreList) {
+        DataHandler.genreList = genreList;
     }
 
 }

@@ -14,8 +14,6 @@ public class Lied {
 
     private String liedUUID;
     private String titel;
-    //private String artistUUID;
-    //private String genreUUID;
     private Date hochladedatum;
 
     @JsonIgnore
@@ -24,11 +22,11 @@ public class Lied {
     private Genre genre;
 
     public void setArtistUUID(String artistUUID) {
-        setArtist(DataHandler.getInstance().readArtistByUUID(artistUUID));
+        setArtist(DataHandler.readArtistByUUID(artistUUID));
     }
 
     public void setGenreUUID(String genreUUID) {
-        setGenre(DataHandler.getInstance().readGenrebyUUID(genreUUID));
+        setGenre(DataHandler.readGenrebyUUID(genreUUID));
     }
 
     /**

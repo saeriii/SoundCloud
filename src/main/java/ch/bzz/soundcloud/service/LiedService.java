@@ -23,7 +23,7 @@ public class LiedService {
     @Path("list")
     @Produces(MediaType.APPLICATION_JSON)
     public Response listLied() {
-        List<Lied> liedList = DataHandler.getInstance().readAllLieder();
+        List<Lied> liedList = DataHandler.readAllLieder();
         return Response
                 .status(200)
                 .entity(liedList)
@@ -41,7 +41,7 @@ public class LiedService {
     public Response readLied(
             @QueryParam("uuid") String liedUUID
     ) {
-        Lied lied = DataHandler.getInstance().readLiedByUUID(liedUUID);
+        Lied lied = DataHandler.readLiedByUUID(liedUUID);
         return Response
                 .status(200)
                 .entity(lied)

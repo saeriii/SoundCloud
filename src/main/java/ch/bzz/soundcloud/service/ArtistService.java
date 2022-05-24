@@ -23,7 +23,7 @@ public class ArtistService {
     @Path("list")
     @Produces(MediaType.APPLICATION_JSON)
     public Response listArtists() {
-        List<Artist> artistList = DataHandler.getInstance().readAllArtists();
+        List<Artist> artistList = DataHandler.readAllArtists();
         return Response
                 .status(200)
                 .entity(artistList)
@@ -41,7 +41,7 @@ public class ArtistService {
     public Response readArtist(
             @QueryParam("uuid") String artistUUID
     ) {
-        Artist artist = DataHandler.getInstance().readArtistByUUID(artistUUID);
+        Artist artist = DataHandler.readArtistByUUID(artistUUID);
         return Response
                 .status(200)
                 .entity(artist)

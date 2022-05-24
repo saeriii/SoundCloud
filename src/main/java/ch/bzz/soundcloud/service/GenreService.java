@@ -22,7 +22,7 @@ public class GenreService {
     @Path("list")
     @Produces(MediaType.APPLICATION_JSON)
     public Response listGenre() {
-        List<Genre> genreList = DataHandler.getInstance().readAllGenres();
+        List<Genre> genreList = DataHandler.readAllGenres();
         return Response
                 .status(200)
                 .entity(genreList)
@@ -40,7 +40,7 @@ public class GenreService {
     public Response readGenre(
             @QueryParam("uuid") String genreUUID
     ) {
-        Genre genre = DataHandler.getInstance().readGenrebyUUID(genreUUID);
+        Genre genre = DataHandler.readGenrebyUUID(genreUUID);
         return Response
                 .status(200)
                 .entity(genre)
