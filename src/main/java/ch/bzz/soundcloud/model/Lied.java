@@ -1,8 +1,10 @@
 package ch.bzz.soundcloud.model;
 
+import ch.bzz.soundcloud.data.DataHandler;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import java.time.LocalDate;
+import java.util.Date;
 
 /**
  * Ein Lied eines Artists
@@ -12,14 +14,22 @@ public class Lied {
 
     private String liedUUID;
     private String titel;
-    private String artistUUID;
-    private String genreUUID;
-    private LocalDate hochladedatum;
+    //private String artistUUID;
+    //private String genreUUID;
+    private Date hochladedatum;
 
     @JsonIgnore
     private Artist artist;
     @JsonIgnore
     private Genre genre;
+
+    public void setArtistUUID(String artistUUID) {
+        setArtist(DataHandler.getInstance().readArtistByUUID(artistUUID));
+    }
+
+    public void setGenreUUID(String genreUUID) {
+        setGenre(DataHandler.getInstance().readGenrebyUUID(genreUUID));
+    }
 
     /**
      * gets liedUUID
@@ -58,47 +68,11 @@ public class Lied {
     }
 
     /**
-     * gets artistUUID
-     *
-     * @return value of artistUUID
-     */
-    public String getArtistUUID() {
-        return artistUUID;
-    }
-
-    /**
-     * sets artistUUID
-     *
-     * @param artistUUID the value to set
-     */
-    public void setArtistUUID(String artistUUID) {
-        this.artistUUID = artistUUID;
-    }
-
-    /**
-     * gets genreUUID
-     *
-     * @return value of genreUUID
-     */
-    public String getGenreUUID() {
-        return genreUUID;
-    }
-
-    /**
-     * sets genreUUID
-     *
-     * @param genreUUID the value to set
-     */
-    public void setGenreUUID(String genreUUID) {
-        this.genreUUID = genreUUID;
-    }
-
-    /**
      * gets hochladedatum
      *
      * @return value of hochladedatum
      */
-    public LocalDate getHochladedatum() {
+    public Date getHochladedatum() {
         return hochladedatum;
     }
 
@@ -107,7 +81,7 @@ public class Lied {
      *
      * @param hochladedatum the value to set
      */
-    public void setHochladedatum(LocalDate hochladedatum) {
+    public void setHochladedatum(Date hochladedatum) {
         this.hochladedatum = hochladedatum;
     }
 
