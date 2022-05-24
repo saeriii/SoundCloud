@@ -10,29 +10,16 @@ import java.time.LocalDate;
 
 public class Lied {
 
-    private Artist artist;
     private String liedUUID;
     private String titel;
-    private Genre genre;
+    private String artistUUID;
+    private String genreUUID;
     private LocalDate hochladedatum;
 
-    /**
-     * gets artist
-     *
-     * @return value of artist
-     */
-    public Artist getArtist() {
-        return artist;
-    }
-
-    /**
-     * sets artist
-     *
-     * @param artist the value to set
-     */
-    public void setArtist(Artist artist) {
-        this.artist = artist;
-    }
+    @JsonIgnore
+    private Artist artist;
+    @JsonIgnore
+    private Genre genre;
 
     /**
      * gets liedUUID
@@ -71,21 +58,39 @@ public class Lied {
     }
 
     /**
-     * gets genre
+     * gets artistUUID
      *
-     * @return value of genre
+     * @return value of artistUUID
      */
-    public Genre getGenre() {
-        return genre;
+    public String getArtistUUID() {
+        return artistUUID;
     }
 
     /**
-     * sets genre
+     * sets artistUUID
      *
-     * @param genre the value to set
+     * @param artistUUID the value to set
      */
-    public void setGenre(Genre genre) {
-        this.genre = genre;
+    public void setArtistUUID(String artistUUID) {
+        this.artistUUID = artistUUID;
+    }
+
+    /**
+     * gets genreUUID
+     *
+     * @return value of genreUUID
+     */
+    public String getGenreUUID() {
+        return genreUUID;
+    }
+
+    /**
+     * sets genreUUID
+     *
+     * @param genreUUID the value to set
+     */
+    public void setGenreUUID(String genreUUID) {
+        this.genreUUID = genreUUID;
     }
 
     /**
@@ -104,5 +109,41 @@ public class Lied {
      */
     public void setHochladedatum(LocalDate hochladedatum) {
         this.hochladedatum = hochladedatum;
+    }
+
+    /**
+     * gets artist
+     *
+     * @return value of artist
+     */
+    public Artist getArtist() {
+        return artist;
+    }
+
+    /**
+     * sets artist
+     *
+     * @param artist the value to set
+     */
+    public void setArtist(Artist artist) {
+        this.artist = artist;
+    }
+
+    /**
+     * gets genre
+     *
+     * @return value of genre
+     */
+    public Genre getGenre() {
+        return genre;
+    }
+
+    /**
+     * sets genre
+     *
+     * @param genre the value to set
+     */
+    public void setGenre(Genre genre) {
+        this.genre = genre;
     }
 }

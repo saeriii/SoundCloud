@@ -127,6 +127,7 @@ public class DataHandler {
                     )
             );
             ObjectMapper objectMapper = new ObjectMapper();
+            objectMapper.registerModule(new JavaTimeModule());
             Lied[] lieder = objectMapper.readValue(jsonData, Lied[].class);
             for (Lied lied : lieder) {
                 getLiedList().add(lied);
