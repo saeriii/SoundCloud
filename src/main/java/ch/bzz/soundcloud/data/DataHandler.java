@@ -6,19 +6,15 @@ import ch.bzz.soundcloud.model.Genre;
 import ch.bzz.soundcloud.service.Config;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
-import com.google.inject.Singleton;
 
-import javax.xml.crypto.Data;
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
-import java.util.ArrayList;
 import java.util.List;
 
 /**
  * reads and writes the data in the JSON-files
  */
-@Singleton
 public class DataHandler {
     private static DataHandler instance;
     private static List<Lied> liedList;
