@@ -1,37 +1,41 @@
-package ch.bzz.soundcloud.data;
-
 import ch.bzz.soundcloud.model.Artist;
-import ch.bzz.soundcloud.model.Lied;
 import ch.bzz.soundcloud.model.Genre;
+import ch.bzz.soundcloud.model.Lied;
 import ch.bzz.soundcloud.service.Config;
-
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import java.io.IOException;
 import java.nio.file.Files;
 import java.nio.file.Paths;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
  * reads and writes the data in the JSON-files
  */
 public class DataHandler {
-    private static DataHandler instance;
-    private static List<Lied> liedList;
-    private static List<Artist> artistList;
-    private static List<Genre> genreList;
+    private static DataHandler instance = null;
+    private List<Lied> liedList;
+    private List<Artist> artistList;
+    private List<Genre> genreList;
 
     /**
      * private constructor defeats instantiation
      */
     private DataHandler() {
+        setLiedList(new ArrayList<>());
+        readLiedJSON();
+        setArtistList(new ArrayList<>());
+        readArtistJSON();
+        setGenreList(new ArrayList<>());
+        readGenreJSON();
     }
 
     /**
      * gets the only instance of this class
      * @return
      */
-    public synchronized static DataHandler getInstance() {
+    public static DataHandler getInstance() {
         if (instance == null)
             instance = new DataHandler();
         return instance;
@@ -42,7 +46,7 @@ public class DataHandler {
      * reads all Lieder
      * @return list of Lieder
      */
-    public static List<Lied> readAllLieder() {
+    public List<Lied> readAllLieder() {
         return getLiedList();
     }
 
@@ -51,7 +55,7 @@ public class DataHandler {
      * @param liedUUID
      * @return the Lied (null=not found)
      */
-    public static Lied readLiedByUUID(String liedUUID) {
+    public Lied readLiedByUUID(String liedUUID) {
         Lied lied = null;
         for (Lied entry : getLiedList()) {
             if (entry.getLiedUUID().equals(liedUUID)) {
@@ -65,7 +69,7 @@ public class DataHandler {
      * reads all artists
      * @return list of artists
      */
-    public static List<Artist> readAllArtists() {
+    public List<Artist> readAllArtists() {
         return getArtistList();
     }
 
@@ -74,7 +78,7 @@ public class DataHandler {
      * @param artistUUID
      * @return the Artist (null=not found)
      */
-    public static Artist readArtistByUUID(String artistUUID) {
+    public Artist readArtistByUUID(String artistUUID) {
         Artist artist = null;
         for (Artist entry : getArtistList()) {
             if (entry.getArtistUUID().equals(artistUUID)) {
@@ -88,7 +92,7 @@ public class DataHandler {
      * reads all genres
      * @return list of genres
      */
-    public static List<Genre> readAllGenres() {
+    public List<Genre> readAllGenres() {
 
         return getGenreList();
     }
@@ -98,7 +102,7 @@ public class DataHandler {
      * @param genreUUID
      * @return the Genre (null=not found)
      */
-    public static Genre readGenrebyUUID(String genreUUID) {
+    public Genre readGenrebyUUID(String genreUUID) {
         Genre genre = null;
         for (Genre entry : getGenreList()) {
             if (entry.getGenreUUID().equals(genreUUID)) {
@@ -111,7 +115,7 @@ public class DataHandler {
     /**
      * reads the Lieder from the JSON-file
      */
-    private static void readLiedJSON() {
+    private void readLiedJSON() {
         try {
             byte[] jsonData = Files.readAllBytes(
                     Paths.get(
@@ -131,7 +135,7 @@ public class DataHandler {
     /**
      * reads the artists from the JSON-file
      */
-    private static void readArtistJSON() {
+    private void readArtistJSON() {
         try {
             byte[] jsonData = Files.readAllBytes(
                     Paths.get(
@@ -151,7 +155,7 @@ public class DataHandler {
     /**
      * reads the genre from the JSON-file
      */
-    private static void readGenreJSON() {
+    private void readGenreJSON() {
         try {
             byte[] jsonData = Files.readAllBytes(
                     Paths.get(
@@ -173,7 +177,7 @@ public class DataHandler {
      *
      * @return value of liedList
      */
-    private static List<Lied> getLiedList() {
+    private List<Lied> getLiedList() {
         return liedList;
     }
 
@@ -182,8 +186,8 @@ public class DataHandler {
      *
      * @param liedList the value to set
      */
-    private static void setLiedList(List<Lied> liedList) {
-        DataHandler.liedList = liedList;
+    private void setLiedList(List<Lied> liedList) {
+        this.liedList = liedList;
     }
 
     /**
@@ -191,7 +195,7 @@ public class DataHandler {
      *
      * @return value of artistList
      */
-    private static List<Artist> getArtistList() {
+    private List<Artist> getArtistList() {
         return artistList;
     }
 
@@ -200,8 +204,8 @@ public class DataHandler {
      *
      * @param artistList the value to set
      */
-    private static void setArtistList(List<Artist> artistList) {
-        DataHandler.artistList = artistList;
+    private void setArtistList(List<Artist> artistList) {
+        this.artistList = artistList;
     }
 
     /**
@@ -209,7 +213,7 @@ public class DataHandler {
      *
      * @return value of genreList
      */
-    private static List<Genre> getGenreList() {
+    private List<Genre> getGenreList() {
         return genreList;
     }
 
@@ -218,8 +222,8 @@ public class DataHandler {
      *
      * @param genreList the value to set
      */
-    private static void setGenreList(List<Genre> genreList) {
-        DataHandler.genreList = genreList;
+    private void setGenreList(List<Genre> genreList) {
+        this.genreList = genreList;
     }
 
 }
