@@ -41,9 +41,13 @@ public class ArtistService {
     public Response readArtist(
             @QueryParam("uuid") String artistUUID
     ) {
+        int httpStatus = 200;
         Artist artist = DataHandler.readArtistByUUID(artistUUID);
+        if (artist == null) {
+            httpStatus = 410;
+        }
         return Response
-                .status(200)
+                .status(httpStatus)
                 .entity(artist)
                 .build();
     }

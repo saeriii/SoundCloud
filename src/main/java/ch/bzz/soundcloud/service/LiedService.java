@@ -1,7 +1,6 @@
 package ch.bzz.soundcloud.service;
 
 import ch.bzz.soundcloud.data.DataHandler;
-import ch.bzz.soundcloud.model.Genre;
 import ch.bzz.soundcloud.model.Lied;
 
 import javax.ws.rs.GET;
@@ -41,9 +40,13 @@ public class LiedService {
     public Response readLied(
             @QueryParam("uuid") String liedUUID
     ) {
+        int httpStatus = 200;
         Lied lied = DataHandler.readLiedByUUID(liedUUID);
+        if (lied == null) {
+            httpStatus = 410;
+        }
         return Response
-                .status(200)
+                .status(httpStatus)
                 .entity(lied)
                 .build();
     }

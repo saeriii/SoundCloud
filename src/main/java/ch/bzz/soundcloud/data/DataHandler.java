@@ -1,10 +1,15 @@
+package ch.bzz.soundcloud.data;
+
 import ch.bzz.soundcloud.model.Artist;
 import ch.bzz.soundcloud.model.Genre;
 import ch.bzz.soundcloud.model.Lied;
 import ch.bzz.soundcloud.service.Config;
+import com.fasterxml.jackson.core.util.DefaultPrettyPrinter;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.databind.ObjectWriter;
 
-import java.io.IOException;
+import java.io.*;
+import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
 import java.nio.file.Paths;
 import java.util.ArrayList;
@@ -13,40 +18,22 @@ import java.util.List;
 /**
  * reads and writes the data in the JSON-files
  */
-public class DataHandler {
-    private static DataHandler instance = null;
-    private List<Lied> liedList;
-    private List<Artist> artistList;
-    private List<Genre> genreList;
+public final class DataHandler {
+    private static List<Lied> liedList;
+    private static List<Artist> artistList;
+    private static List<Genre> genreList;
 
     /**
      * private constructor defeats instantiation
      */
     private DataHandler() {
-        setLiedList(new ArrayList<>());
-        readLiedJSON();
-        setArtistList(new ArrayList<>());
-        readArtistJSON();
-        setGenreList(new ArrayList<>());
-        readGenreJSON();
     }
-
-    /**
-     * gets the only instance of this class
-     * @return
-     */
-    public static DataHandler getInstance() {
-        if (instance == null)
-            instance = new DataHandler();
-        return instance;
-    }
-
 
     /**
      * reads all Lieder
      * @return list of Lieder
      */
-    public List<Lied> readAllLieder() {
+    public static List<Lied> readAllLieder() {
         return getLiedList();
     }
 
@@ -55,7 +42,7 @@ public class DataHandler {
      * @param liedUUID
      * @return the Lied (null=not found)
      */
-    public Lied readLiedByUUID(String liedUUID) {
+    public static Lied readLiedByUUID(String liedUUID) {
         Lied lied = null;
         for (Lied entry : getLiedList()) {
             if (entry.getLiedUUID().equals(liedUUID)) {
@@ -66,10 +53,43 @@ public class DataHandler {
     }
 
     /**
+     * inserts a new Lied into the liedList
+     *
+     * @param lied the Lied to be saved
+     */
+    public static void insertLied(Lied lied) {
+        getLiedList().add(lied);
+        writeLiedJSON();
+    }
+
+    /**
+     * updates the liedList
+     */
+    public static void updateLied() {
+        writeLiedJSON();
+    }
+
+    /**
+     * deletes a Lied identified by the liedUUID
+     * @param liedUUID  the key
+     * @return  success=true/false
+     */
+    public static boolean deleteLied(String liedUUID) {
+        Lied lied = readLiedByUUID(liedUUID);
+        if (lied != null) {
+            getLiedList().remove(lied);
+            writeLiedJSON();
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    /**
      * reads all artists
      * @return list of artists
      */
-    public List<Artist> readAllArtists() {
+    public static List<Artist> readAllArtists() {
         return getArtistList();
     }
 
@@ -78,7 +98,7 @@ public class DataHandler {
      * @param artistUUID
      * @return the Artist (null=not found)
      */
-    public Artist readArtistByUUID(String artistUUID) {
+    public static Artist readArtistByUUID(String artistUUID) {
         Artist artist = null;
         for (Artist entry : getArtistList()) {
             if (entry.getArtistUUID().equals(artistUUID)) {
@@ -89,10 +109,43 @@ public class DataHandler {
     }
 
     /**
+     * inserts a new artist into the artistList
+     *
+     * @param artist the artist to be saved
+     */
+    public static void insertArtist(Artist artist) {
+        getArtistList().add(artist);
+        writeArtistJSON();
+    }
+
+    /**
+     * updates the artistList
+     */
+    public static void updateArtist() {
+        writeArtistJSON();
+    }
+
+    /**
+     * deletes an artist identified by the artistUUID
+     * @param artistUUID  the key
+     * @return  success=true/false
+     */
+    public static boolean deleteArtist(String artistUUID) {
+        Artist artist = readArtistByUUID(artistUUID);
+        if (artist != null) {
+            getArtistList().remove(artist);
+            writeArtistJSON();
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    /**
      * reads all genres
      * @return list of genres
      */
-    public List<Genre> readAllGenres() {
+    public static List<Genre> readAllGenres() {
 
         return getGenreList();
     }
@@ -102,7 +155,7 @@ public class DataHandler {
      * @param genreUUID
      * @return the Genre (null=not found)
      */
-    public Genre readGenrebyUUID(String genreUUID) {
+    public static Genre readGenrebyUUID(String genreUUID) {
         Genre genre = null;
         for (Genre entry : getGenreList()) {
             if (entry.getGenreUUID().equals(genreUUID)) {
@@ -113,9 +166,42 @@ public class DataHandler {
     }
 
     /**
+     * inserts a new genre into the genreList
+     *
+     * @param genre the genre to be saved
+     */
+    public static void insertGenre(Genre genre) {
+        getGenreList().add(genre);
+        writeGenreJSON();
+    }
+
+    /**
+     * updates the genreList
+     */
+    public static void updateGenre() {
+        writeGenreJSON();
+    }
+
+    /**
+     * deletes a genre identified by the genreUUID
+     * @param genreUUID  the key
+     * @return  success=true/false
+     */
+    public static boolean deleteGenre(String genreUUID) {
+        Genre genre = readGenrebyUUID(genreUUID);
+        if (genre != null) {
+            getGenreList().remove(genre);
+            writeGenreJSON();
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    /**
      * reads the Lieder from the JSON-file
      */
-    private void readLiedJSON() {
+    private static void readLiedJSON() {
         try {
             byte[] jsonData = Files.readAllBytes(
                     Paths.get(
@@ -133,9 +219,28 @@ public class DataHandler {
     }
 
     /**
+     * writes the liedList to the JSON-file
+     */
+    private static void writeLiedJSON() {
+        ObjectMapper objectMapper = new ObjectMapper();
+        ObjectWriter objectWriter = objectMapper.writer(new DefaultPrettyPrinter());
+        FileOutputStream fileOutputStream = null;
+        Writer fileWriter;
+
+        String bookPath = Config.getProperty("liedJSON");
+        try {
+            fileOutputStream = new FileOutputStream(bookPath);
+            fileWriter = new BufferedWriter(new OutputStreamWriter(fileOutputStream, StandardCharsets.UTF_8));
+            objectWriter.writeValue(fileWriter, getLiedList());
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    /**
      * reads the artists from the JSON-file
      */
-    private void readArtistJSON() {
+    private static void readArtistJSON() {
         try {
             byte[] jsonData = Files.readAllBytes(
                     Paths.get(
@@ -153,9 +258,28 @@ public class DataHandler {
     }
 
     /**
+     * writes the artistList to the JSON-file
+     */
+    private static void writeArtistJSON() {
+        ObjectMapper objectMapper = new ObjectMapper();
+        ObjectWriter objectWriter = objectMapper.writer(new DefaultPrettyPrinter());
+        FileOutputStream fileOutputStream = null;
+        Writer fileWriter;
+
+        String bookPath = Config.getProperty("publisherJSON");
+        try {
+            fileOutputStream = new FileOutputStream(bookPath);
+            fileWriter = new BufferedWriter(new OutputStreamWriter(fileOutputStream, StandardCharsets.UTF_8));
+            objectWriter.writeValue(fileWriter, getArtistList());
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    /**
      * reads the genre from the JSON-file
      */
-    private void readGenreJSON() {
+    private static void readGenreJSON() {
         try {
             byte[] jsonData = Files.readAllBytes(
                     Paths.get(
@@ -173,11 +297,34 @@ public class DataHandler {
     }
 
     /**
+     * writes the genreList to the JSON-file
+     */
+    private static void writeGenreJSON() {
+        ObjectMapper objectMapper = new ObjectMapper();
+        ObjectWriter objectWriter = objectMapper.writer(new DefaultPrettyPrinter());
+        FileOutputStream fileOutputStream = null;
+        Writer fileWriter;
+
+        String bookPath = Config.getProperty("publisherJSON");
+        try {
+            fileOutputStream = new FileOutputStream(bookPath);
+            fileWriter = new BufferedWriter(new OutputStreamWriter(fileOutputStream, StandardCharsets.UTF_8));
+            objectWriter.writeValue(fileWriter, getGenreList());
+        } catch (IOException ex) {
+            ex.printStackTrace();
+        }
+    }
+
+    /**
      * gets liedList
      *
      * @return value of liedList
      */
-    private List<Lied> getLiedList() {
+    private static List<Lied> getLiedList() {
+        if (liedList == null) {
+            setLiedList(new ArrayList<>());
+            readLiedJSON();
+        }
         return liedList;
     }
 
@@ -186,8 +333,8 @@ public class DataHandler {
      *
      * @param liedList the value to set
      */
-    private void setLiedList(List<Lied> liedList) {
-        this.liedList = liedList;
+    private static void setLiedList(List<Lied> liedList) {
+        DataHandler.liedList = liedList;
     }
 
     /**
@@ -195,7 +342,11 @@ public class DataHandler {
      *
      * @return value of artistList
      */
-    private List<Artist> getArtistList() {
+    private static List<Artist> getArtistList() {
+        if (artistList == null) {
+            setArtistList(new ArrayList<>());
+            readArtistJSON();
+        }
         return artistList;
     }
 
@@ -204,8 +355,8 @@ public class DataHandler {
      *
      * @param artistList the value to set
      */
-    private void setArtistList(List<Artist> artistList) {
-        this.artistList = artistList;
+    private static void setArtistList(List<Artist> artistList) {
+        DataHandler.artistList = artistList;
     }
 
     /**
@@ -213,7 +364,11 @@ public class DataHandler {
      *
      * @return value of genreList
      */
-    private List<Genre> getGenreList() {
+    private static List<Genre> getGenreList() {
+        if (genreList == null) {
+            setGenreList(new ArrayList<>());
+            readGenreJSON();
+        }
         return genreList;
     }
 
@@ -222,8 +377,8 @@ public class DataHandler {
      *
      * @param genreList the value to set
      */
-    private void setGenreList(List<Genre> genreList) {
-        this.genreList = genreList;
+    private static void setGenreList(List<Genre> genreList) {
+        DataHandler.genreList = genreList;
     }
 
 }

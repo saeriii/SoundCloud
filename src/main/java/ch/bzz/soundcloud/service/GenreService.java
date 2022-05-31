@@ -22,10 +22,14 @@ public class GenreService {
     @Path("list")
     @Produces(MediaType.APPLICATION_JSON)
     public Response listGenre() {
-        List<Genre> genreList = DataHandler.readAllGenres();
+        int httpStatus = 200;
+        List<Genre> genre = DataHandler.readAllGenres();
+        if (genre == null) {
+            httpStatus = 410;
+        }
         return Response
-                .status(200)
-                .entity(genreList)
+                .status(httpStatus)
+                .entity(genre)
                 .build();
     }
 
