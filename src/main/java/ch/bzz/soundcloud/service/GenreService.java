@@ -22,13 +22,9 @@ public class GenreService {
     @Path("list")
     @Produces(MediaType.APPLICATION_JSON)
     public Response listGenre() {
-        int httpStatus = 200;
         List<Genre> genre = DataHandler.readAllGenres();
-        if (genre == null) {
-            httpStatus = 410;
-        }
         return Response
-                .status(httpStatus)
+                .status(200)
                 .entity(genre)
                 .build();
     }
@@ -44,9 +40,13 @@ public class GenreService {
     public Response readGenre(
             @QueryParam("uuid") String genreUUID
     ) {
+        int httpStatus = 200;
         Genre genre = DataHandler.readGenrebyUUID(genreUUID);
+        if (genre == null) {
+            httpStatus = 410;
+        }
         return Response
-                .status(200)
+                .status(httpStatus)
                 .entity(genre)
                 .build();
     }
