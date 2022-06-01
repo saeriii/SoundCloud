@@ -4,10 +4,7 @@ package ch.bzz.soundcloud.service;
         import ch.bzz.soundcloud.model.Artist;
         import ch.bzz.soundcloud.model.Genre;
 
-        import javax.ws.rs.GET;
-        import javax.ws.rs.Path;
-        import javax.ws.rs.Produces;
-        import javax.ws.rs.QueryParam;
+        import javax.ws.rs.*;
         import javax.ws.rs.core.MediaType;
         import javax.ws.rs.core.Response;
         import java.util.List;
@@ -49,6 +46,27 @@ public class ArtistService {
         return Response
                 .status(httpStatus)
                 .entity(artist)
+                .build();
+    }
+
+    /**
+     * deletes an Artist identified by their uuid
+     * @param artistUUID the key
+     * @return Response
+     */
+    @DELETE
+    @Path("delete")
+    @Produces(MediaType.TEXT_PLAIN)
+    public Response deleteArtist(
+            @QueryParam("uuid") String artistUUID
+    ) {
+        int httpStatus = 200;
+        if (!DataHandler.deleteArtist(artistUUID)) {
+            httpStatus = 410;
+        }
+        return Response
+                .status(httpStatus)
+                .entity("")
                 .build();
     }
 

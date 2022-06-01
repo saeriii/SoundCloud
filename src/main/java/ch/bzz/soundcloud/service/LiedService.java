@@ -3,10 +3,7 @@ package ch.bzz.soundcloud.service;
 import ch.bzz.soundcloud.data.DataHandler;
 import ch.bzz.soundcloud.model.Lied;
 
-import javax.ws.rs.GET;
-import javax.ws.rs.Path;
-import javax.ws.rs.Produces;
-import javax.ws.rs.QueryParam;
+import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
 import java.util.List;
@@ -48,6 +45,27 @@ public class LiedService {
         return Response
                 .status(httpStatus)
                 .entity(lied)
+                .build();
+    }
+
+    /**
+     * deletes a Lied identified by its uuid
+     * @param liedUUID the key
+     * @return Response
+     */
+    @DELETE
+    @Path("delete")
+    @Produces(MediaType.TEXT_PLAIN)
+    public Response deleteLied(
+            @QueryParam("uuid") String liedUUID
+    ) {
+        int httpStatus = 200;
+        if (!DataHandler.deleteLied(liedUUID)) {
+            httpStatus = 410;
+        }
+        return Response
+                .status(httpStatus)
+                .entity("")
                 .build();
     }
 
