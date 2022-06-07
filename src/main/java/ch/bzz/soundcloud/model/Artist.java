@@ -3,17 +3,17 @@ package ch.bzz.soundcloud.model;
 import java.util.List;
 
 /**
- * Der Artist eines Liedes
+ * The artist of a song
  */
 
 public class Artist {
 
     private String artistUUID;
-    private List<Lied> lieder;
-    private String vorname;
-    private String nachname;
-    private String telNr;
-    private Integer anzahlLieder;
+    private List<Song> songs;
+    private String firstname;
+    private String surname;
+    private String tel;
+    private Integer numberOfSongs;
 
     /**
      * gets artistUUID
@@ -34,93 +34,93 @@ public class Artist {
     }
 
     /**
-     * gets lieder
+     * gets songs
      *
-     * @return value of lieder
+     * @return value of songs
      */
-    public List<Lied> getLieder() {
-        return lieder;
+    public List<Song> getSongs() {
+        return songs;
     }
 
     /**
-     * sets lieder
+     * sets songs
      *
-     * @param lieder the value to set
+     * @param songs the value to set
      */
-    public void setLieder(List<Lied> lieder) {
-        this.lieder = lieder;
+    public void setSongs(List<Song> songs) {
+        this.songs = songs;
     }
 
     /**
-     * gets vorname
+     * gets firstname
      *
-     * @return value of vorname
+     * @return value of firstname
      */
-    public String getVorname() {
-        return vorname;
+    public String getFirstname() {
+        return firstname;
     }
 
     /**
-     * sets vorname
+     * sets firstname
      *
-     * @param vorname the value to set
+     * @param firstname the value to set
      */
-    public void setVorname(String vorname) {
-        this.vorname = vorname;
+    public void setFirstname(String firstname) {
+        this.firstname = firstname;
     }
 
     /**
-     * gets nachname
+     * gets surname
      *
-     * @return value of nachname
+     * @return value of surname
      */
-    public String getNachname() {
-        return nachname;
+    public String getSurname() {
+        return surname;
     }
 
     /**
-     * sets nachname
+     * sets surname
      *
-     * @param nachname the value to set
+     * @param surname the value to set
      */
-    public void setNachname(String nachname) {
-        this.nachname = nachname;
+    public void setSurname(String surname) {
+        this.surname = surname;
     }
 
     /**
-     * gets telNr
+     * gets tel
      *
-     * @return value of telNr
+     * @return value of tel
      */
-    public String getTelNr() {
-        return telNr;
+    public String getTel() {
+        return tel;
     }
 
     /**
-     * sets telNr
+     * sets tel
      *
-     * @param telNr the value to set
+     * @param tel the value to set
      */
-    public void setTelNr(String telNr) {
-        this.telNr = telNr;
+    public void setTel(String tel) {
+        this.tel = tel;
     }
 
     /**
-     * gets anzahlLieder
+     * gets numberOfSongs
      *
-     * @return value of anzahlLieder
+     * @return value of numberOfSongs
      */
-    public Integer getAnzahlLieder() {
-        return anzahlLieder;
+    public Integer getNumberOfSongs() {
+        return numberOfSongs;
     }
 
     /**
-     * sets anzahlLieder
+     * sets numberOfSongs
      *
-     * @param anzahlLieder the value to set
+     * @param numberOfSongs the value to set
      */
-    public void setAnzahlLieder(Integer anzahlLieder) {
-        this.anzahlLieder = anzahlLieder;
+    public void setNumberOfSongs(Integer numberOfSongs) {
+        this.numberOfSongs = numberOfSongs;
     }
 }
 

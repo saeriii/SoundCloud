@@ -4,17 +4,16 @@ import ch.bzz.soundcloud.data.DataHandler;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import java.time.LocalDate;
-import java.util.Date;
 
 /**
- * Ein Lied eines Artists
+ * A song of an artist
  */
 
-public class Lied {
+public class Song {
 
-    private String liedUUID;
-    private String titel;
-    private Date hochladedatum;
+    private String songUUID;
+    private String title;
+    private String uploadDate;
 
     @JsonIgnore
     private Artist artist;
@@ -30,57 +29,57 @@ public class Lied {
     }
 
     /**
-     * gets liedUUID
+     * gets songUUID
      *
-     * @return value of liedUUID
+     * @return value of songUUID
      */
-    public String getLiedUUID() {
-        return liedUUID;
+    public String getSongUUID() {
+        return songUUID;
     }
 
     /**
-     * sets liedUUID
+     * sets songUUID
      *
-     * @param liedUUID the value to set
+     * @param songUUID the value to set
      */
-    public void setLiedUUID(String liedUUID) {
-        this.liedUUID = liedUUID;
+    public void setSongUUID(String songUUID) {
+        this.songUUID = songUUID;
     }
 
     /**
-     * gets titel
+     * gets title
      *
-     * @return value of titel
+     * @return value of title
      */
-    public String getTitel() {
-        return titel;
+    public String getTitle() {
+        return title;
     }
 
     /**
-     * sets titel
+     * sets title
      *
-     * @param titel the value to set
+     * @param title the value to set
      */
-    public void setTitel(String titel) {
-        this.titel = titel;
+    public void setTitle(String title) {
+        this.title = title;
     }
 
     /**
-     * gets hochladedatum
+     * gets uploadDate
      *
-     * @return value of hochladedatum
+     * @return value of uploadDate
      */
-    public Date getHochladedatum() {
-        return hochladedatum;
+    public String getUploadDate() {
+        return uploadDate;
     }
 
     /**
-     * sets hochladedatum
+     * sets uploadDate
      *
-     * @param hochladedatum the value to set
+     * @param uploadDate the value to set
      */
-    public void setHochladedatum(Date hochladedatum) {
-        this.hochladedatum = hochladedatum;
+    public void setUploadDate(String uploadDate) {
+        this.uploadDate = uploadDate;
     }
 
     /**
