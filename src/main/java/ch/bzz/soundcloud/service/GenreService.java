@@ -1,6 +1,7 @@
 package ch.bzz.soundcloud.service;
 
 import ch.bzz.soundcloud.data.DataHandler;
+import ch.bzz.soundcloud.model.Artist;
 import ch.bzz.soundcloud.model.Genre;
 import ch.bzz.soundcloud.model.Song;
 
@@ -65,12 +66,49 @@ public class GenreService {
     ) {
         Genre genre1 = new Genre();
         genre1.setGenreUUID(UUID.randomUUID().toString());
-        genre1.setGenre(genre);
-        genre1.setPopularity(popularity);
+        setAttributes(
+                genre1,
+                genre,
+                popularity
+        );
 
         DataHandler.insertGenre(genre1);
         return Response
                 .status(200)
+                .entity("")
+                .build();
+    }
+
+    /**
+     * updates a new artist
+     * @param genreUUID the key
+     * @param genre
+     * @param popularity
+     * @return Response
+     */
+    @PUT
+    @Path("update")
+    @Produces(MediaType.TEXT_PLAIN)
+    public Response updateArtist(
+            @FormParam("genreUUID") String genreUUID,
+            @FormParam("genre") String genre,
+            @FormParam("popularity") Integer popularity
+    ) {
+        int httpStatus = 200;
+        Genre genre1 = DataHandler.readGenrebyUUID(genreUUID);
+        if (genre1 != null) {
+            setAttributes(
+                    genre1,
+                    genre,
+                    popularity
+            );
+
+            DataHandler.updateGenre();
+        } else {
+            httpStatus = 410;
+        }
+        return Response
+                .status(httpStatus)
                 .entity("")
                 .build();
     }
@@ -96,5 +134,20 @@ public class GenreService {
                 .build();
     }
 
+
+    /**
+     * sets the attributes for the genre-object
+     * @param genre1  the genre-object
+     * @param genre  the genre name
+     * @param popularity  the popularity
+     */
+    private void setAttributes(
+            Genre genre1,
+            String genre,
+            Integer popularity
+    ) {
+        genre1.setGenre(genre);
+        genre1.setPopularity(popularity);
+    }
 
 }

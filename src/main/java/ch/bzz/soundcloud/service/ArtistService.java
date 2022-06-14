@@ -70,14 +70,57 @@ public class ArtistService {
     ) {
         Artist artist = new Artist();
         artist.setArtistUUID(UUID.randomUUID().toString());
-        artist.setFirstname(firstname);
-        artist.setSurname(surname);
-        artist.setTel(tel);
-        artist.setNumberOfSongs(numberOfSongs);
+        setAttributes(
+                artist,
+                firstname,
+                surname,
+                tel,
+                numberOfSongs
+        );
 
         DataHandler.insertArtist(artist);
         return Response
                 .status(200)
+                .entity("")
+                .build();
+    }
+
+    /**
+     * updates a new artist
+     * @param artistUUID the key
+     * @param firstname
+     * @param surname
+     * @param tel
+     * @param numberOfSongs
+     * @return Response
+     */
+    @PUT
+    @Path("update")
+    @Produces(MediaType.TEXT_PLAIN)
+    public Response updateArtist(
+            @FormParam("artistUUID") String artistUUID,
+            @FormParam("firstname") String firstname,
+            @FormParam("surname") String surname,
+            @FormParam("tel") String tel,
+            @FormParam("numberOfSongs") Integer numberOfSongs
+    ) {
+        int httpStatus = 200;
+        Artist artist = DataHandler.readArtistByUUID(artistUUID);
+        if (artist != null) {
+            setAttributes(
+                    artist,
+                    firstname,
+                    surname,
+                    tel,
+                    numberOfSongs
+            );
+
+            DataHandler.updateArtist();
+        } else {
+            httpStatus = 410;
+        }
+        return Response
+                .status(httpStatus)
                 .entity("")
                 .build();
     }
@@ -102,5 +145,27 @@ public class ArtistService {
                 .entity("")
                 .build();
     }
+
+    /**
+     * sets the attributes for the artist-object
+     * @param artist  the artist-object
+     * @param firstname  the first name
+     * @param surname  the surname
+     * @param tel  the telephone number
+     * @param numberOfSongs  the number of songs
+     */
+    private void setAttributes(
+            Artist artist,
+            String firstname,
+            String surname,
+            String tel,
+            Integer numberOfSongs
+    ) {
+        artist.setFirstname(firstname);
+        artist.setSurname(surname);
+        artist.setTel(tel);
+        artist.setNumberOfSongs(numberOfSongs);
+    }
+
 
 }

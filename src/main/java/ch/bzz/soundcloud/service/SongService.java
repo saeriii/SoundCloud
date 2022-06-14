@@ -68,17 +68,60 @@ public class SongService {
     ) {
         Song song = new Song();
         song.setSongUUID(UUID.randomUUID().toString());
-        song.setTitle(title);
-        song.setUploadDate(uploadDate);
-        song.setArtistUUID(artistUUID);
-        song.setGenreUUID(genreUUID);
-
+        setAttributes(
+                song,
+                title,
+                uploadDate,
+                artistUUID,
+                genreUUID
+        );
         DataHandler.insertSong(song);
         return Response
                 .status(200)
                 .entity("")
                 .build();
     }
+
+    /**
+     * updates a new song
+     * @param songUUID the key
+     * @param title
+     * @param uploadDate
+     * @param artistUUID
+     * @param genreUUID
+     * @return Response
+     */
+    @PUT
+    @Path("update")
+    @Produces(MediaType.TEXT_PLAIN)
+    public Response updateSong(
+            @FormParam("songUUID") String songUUID,
+            @FormParam("title") String title,
+            @FormParam("uploadDate") String uploadDate,
+            @FormParam("artistUUID") String artistUUID,
+            @FormParam("genreUUID") String genreUUID
+    ) {
+        int httpStatus = 200;
+        Song song = DataHandler.readSongbyUUID(songUUID);
+        if (song != null) {
+            setAttributes(
+                    song,
+                    title,
+                    uploadDate,
+                    artistUUID,
+                    genreUUID
+            );
+
+            DataHandler.updateSong();
+        } else {
+            httpStatus = 410;
+        }
+        return Response
+                .status(httpStatus)
+                .entity("")
+                .build();
+    }
+
 
     /**
      * deletes a song identified by its uuid
@@ -99,6 +142,27 @@ public class SongService {
                 .status(httpStatus)
                 .entity("")
                 .build();
+    }
+
+    /**
+     * sets the attributes for the song-object
+     * @param song  the song-object
+     * @param title  the title
+     * @param uploadDate  the upload date
+     * @param artistUUID  the uuid of the artist
+     * @param genreUUID  the uuid of the genre
+     */
+    private void setAttributes(
+            Song song,
+            String title,
+            String uploadDate,
+            String artistUUID,
+            String genreUUID
+    ) {
+        song.setTitle(title);
+        song.setUploadDate(uploadDate);
+        song.setArtistUUID(artistUUID);
+        song.setGenreUUID(genreUUID);
     }
 
 }
