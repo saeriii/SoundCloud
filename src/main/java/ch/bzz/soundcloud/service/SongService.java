@@ -50,7 +50,7 @@ public class SongService {
     }
 
     /**
-     * inserts a new Song
+     * inserts a new song
      * @param title
      * @param uploadDate
      * @param artistUUID

@@ -3,11 +3,13 @@ package ch.bzz.soundcloud.service;
         import ch.bzz.soundcloud.data.DataHandler;
         import ch.bzz.soundcloud.model.Artist;
         import ch.bzz.soundcloud.model.Genre;
+        import ch.bzz.soundcloud.model.Song;
 
         import javax.ws.rs.*;
         import javax.ws.rs.core.MediaType;
         import javax.ws.rs.core.Response;
         import java.util.List;
+        import java.util.UUID;
 
 @Path("artist")
 public class ArtistService {
@@ -46,6 +48,37 @@ public class ArtistService {
         return Response
                 .status(httpStatus)
                 .entity(artist)
+                .build();
+    }
+
+    /**
+     * inserts a new artist
+     * @param firstname
+     * @param surname
+     * @param tel
+     * @param numberOfSongs
+     * @return Response
+     */
+    @POST
+    @Path("create")
+    @Produces(MediaType.TEXT_PLAIN)
+    public Response insertArtist(
+            @FormParam("firstname") String firstname,
+            @FormParam("surname") String surname,
+            @FormParam("tel") String tel,
+            @FormParam("numberOfSongs") Integer numberOfSongs
+    ) {
+        Artist artist = new Artist();
+        artist.setArtistUUID(UUID.randomUUID().toString());
+        artist.setFirstname(firstname);
+        artist.setSurname(surname);
+        artist.setTel(tel);
+        artist.setNumberOfSongs(numberOfSongs);
+
+        DataHandler.insertArtist(artist);
+        return Response
+                .status(200)
+                .entity("")
                 .build();
     }
 

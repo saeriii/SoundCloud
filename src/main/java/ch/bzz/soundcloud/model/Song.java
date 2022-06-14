@@ -20,6 +20,28 @@ public class Song {
     @JsonIgnore
     private Genre genre;
 
+    /**
+     * gets the artistUUID from the Artist-object
+     * @return
+     */
+    public String getArtistUUID() {
+        if (getArtist()== null) return null;
+        return getArtist().getArtistUUID();
+    }
+
+    /**
+     * gets the genreUUID from the Genre-object
+     * @return
+     */
+    public String getGenreUUID() {
+        if (getGenre()== null) return null;
+        return getGenre().getGenreUUID();
+    }
+
+    /**
+     * creates an Artist-object without the songs
+     * @param artistUUID the key
+     */
     public void setArtistUUID(String artistUUID) {
         setArtist(DataHandler.readArtistByUUID(artistUUID));
     }

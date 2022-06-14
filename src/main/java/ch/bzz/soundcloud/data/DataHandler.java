@@ -30,6 +30,15 @@ public final class DataHandler {
     }
 
     /**
+     * initialize the lists with the data
+     */
+    public static void initLists() {
+        DataHandler.setSongList(null);
+        DataHandler.setArtistList(null);
+        DataHandler.setGenreList(null);
+    }
+
+    /**
      * reads all songs
      * @return list of songs
      */

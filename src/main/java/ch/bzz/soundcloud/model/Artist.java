@@ -1,5 +1,8 @@
 package ch.bzz.soundcloud.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
+
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -9,11 +12,18 @@ import java.util.List;
 public class Artist {
 
     private String artistUUID;
+
+    @JsonIgnore
     private List<Song> songs;
+
     private String firstname;
     private String surname;
     private String tel;
     private Integer numberOfSongs;
+
+    public Artist() {
+        setSongs(new ArrayList<>());
+    }
 
     /**
      * gets artistUUID
