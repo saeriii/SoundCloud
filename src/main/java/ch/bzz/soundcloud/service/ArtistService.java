@@ -126,7 +126,7 @@ public class ArtistService {
     }
 
     /**
-     * deletes an Artist identified by their uuid
+     * deletes an artist identified by their uuid
      * @param artistUUID the key
      * @return Response
      */

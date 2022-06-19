@@ -3,6 +3,7 @@ package ch.bzz.soundcloud.model;
 import ch.bzz.soundcloud.data.DataHandler;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import javax.xml.crypto.Data;
 import java.time.LocalDate;
 
 /**
@@ -40,14 +41,28 @@ public class Song {
 
     /**
      * creates an Artist-object without the songs
-     * @param artistUUID the key
+     * @param artistUUID
      */
     public void setArtistUUID(String artistUUID) {
-        setArtist(DataHandler.readArtistByUUID(artistUUID));
+        setArtist(new Artist());
+        Artist artist = DataHandler.readArtistByUUID(artistUUID);
+        getArtist().setArtistUUID(artistUUID);
+        getArtist().setFirstname(artist.getFirstname());
+        getArtist().setSurname(artist.getSurname());
+        getArtist().setTel(artist.getTel());
+        getArtist().setNumberOfSongs(artist.getNumberOfSongs());
     }
 
+    /**
+     * creates an Genre-object
+     * @param genreUUID
+     */
     public void setGenreUUID(String genreUUID) {
-        setGenre(DataHandler.readGenrebyUUID(genreUUID));
+        setGenre(new Genre());
+        Genre genre = DataHandler.readGenrebyUUID(genreUUID);
+        getGenre().setGenreUUID(genreUUID);
+        getGenre().setGenre(genre.getGenre());
+        getGenre().setPopularity(genre.getPopularity());
     }
 
     /**
