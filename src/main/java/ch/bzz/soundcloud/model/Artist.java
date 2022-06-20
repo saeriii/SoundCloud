@@ -38,6 +38,7 @@ public class Artist {
     private String tel;
 
     @FormParam("numberOfSongs")
+    @NotEmpty
     private Integer numberOfSongs;
 
     public Artist() {

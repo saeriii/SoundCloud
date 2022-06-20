@@ -67,7 +67,6 @@ public class ArtistService {
             @Valid @BeanParam Artist artist
     ) {
         artist.setArtistUUID(UUID.randomUUID().toString());
-
         DataHandler.insertArtist(artist);
         return Response
                 .status(200)

@@ -18,7 +18,6 @@ public class Genre {
     private String genre;
 
     @FormParam("popularity")
-    @Size(min=1, max=5)
     private Integer popularity;
 
     /**
