@@ -14,13 +14,12 @@ import java.util.List;
  */
 
 public class Artist {
+    @JsonIgnore
+    private List<Song> songs;
 
     @FormParam("artistUUID")
     @Pattern(regexp = "|[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}")
     private String artistUUID;
-
-    @JsonIgnore
-    private List<Song> songs;
 
     @FormParam("firstname")
     @NotEmpty
@@ -38,7 +37,6 @@ public class Artist {
     private String tel;
 
     @FormParam("numberOfSongs")
-    @NotEmpty
     private Integer numberOfSongs;
 
     public Artist() {

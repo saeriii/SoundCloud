@@ -27,7 +27,7 @@ public class Song {
 
     @FormParam("uploadDate")
     @NotEmpty
-    @Pattern(regexp = "(([1-2][0-9])|([1-9])|(3[0-1])).((1[0-2])|([1-9])).[0-9]{4}\n")
+    @Pattern(regexp = "^\\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$")
     private String uploadDate;
 
     @JsonIgnore
