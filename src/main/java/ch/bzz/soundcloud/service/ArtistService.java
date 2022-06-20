@@ -5,6 +5,9 @@ package ch.bzz.soundcloud.service;
         import ch.bzz.soundcloud.model.Genre;
         import ch.bzz.soundcloud.model.Song;
 
+        import javax.validation.Valid;
+        import javax.validation.constraints.NotEmpty;
+        import javax.validation.constraints.Pattern;
         import javax.ws.rs.*;
         import javax.ws.rs.core.MediaType;
         import javax.ws.rs.core.Response;
@@ -38,6 +41,8 @@ public class ArtistService {
     @Path("read")
     @Produces(MediaType.APPLICATION_JSON)
     public Response readArtist(
+            @NotEmpty
+            @Pattern(regexp = "|[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}")
             @QueryParam("uuid") String artistUUID
     ) {
         int httpStatus = 200;
@@ -53,30 +58,15 @@ public class ArtistService {
 
     /**
      * inserts a new artist
-     * @param firstname
-     * @param surname
-     * @param tel
-     * @param numberOfSongs
      * @return Response
      */
     @POST
     @Path("create")
     @Produces(MediaType.TEXT_PLAIN)
     public Response insertArtist(
-            @FormParam("firstname") String firstname,
-            @FormParam("surname") String surname,
-            @FormParam("tel") String tel,
-            @FormParam("numberOfSongs") Integer numberOfSongs
+            @Valid @BeanParam Artist artist
     ) {
-        Artist artist = new Artist();
         artist.setArtistUUID(UUID.randomUUID().toString());
-        setAttributes(
-                artist,
-                firstname,
-                surname,
-                tel,
-                numberOfSongs
-        );
 
         DataHandler.insertArtist(artist);
         return Response
@@ -86,34 +76,22 @@ public class ArtistService {
     }
 
     /**
-     * updates a new artist
-     * @param artistUUID the key
-     * @param firstname
-     * @param surname
-     * @param tel
-     * @param numberOfSongs
+     * updates an artist
      * @return Response
      */
     @PUT
     @Path("update")
     @Produces(MediaType.TEXT_PLAIN)
     public Response updateArtist(
-            @FormParam("artistUUID") String artistUUID,
-            @FormParam("firstname") String firstname,
-            @FormParam("surname") String surname,
-            @FormParam("tel") String tel,
-            @FormParam("numberOfSongs") Integer numberOfSongs
+            @Valid @BeanParam Artist artist
     ) {
         int httpStatus = 200;
-        Artist artist = DataHandler.readArtistByUUID(artistUUID);
-        if (artist != null) {
-            setAttributes(
-                    artist,
-                    firstname,
-                    surname,
-                    tel,
-                    numberOfSongs
-            );
+        Artist oldArtist = DataHandler.readArtistByUUID(artist.getArtistUUID());
+        if (oldArtist != null) {
+            oldArtist.setFirstname(artist.getFirstname());
+            oldArtist.setSurname(artist.getSurname());
+            oldArtist.setTel(artist.getTel());
+            oldArtist.setNumberOfSongs(artist.getNumberOfSongs());
 
             DataHandler.updateArtist();
         } else {
@@ -134,6 +112,8 @@ public class ArtistService {
     @Path("delete")
     @Produces(MediaType.TEXT_PLAIN)
     public Response deleteArtist(
+            @NotEmpty
+            @Pattern(regexp = "|[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}")
             @QueryParam("uuid") String artistUUID
     ) {
         int httpStatus = 200;

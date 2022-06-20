@@ -2,6 +2,10 @@ package ch.bzz.soundcloud.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
+import javax.ws.rs.FormParam;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,14 +15,29 @@ import java.util.List;
 
 public class Artist {
 
+    @FormParam("artistUUID")
+    @Pattern(regexp = "|[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}")
     private String artistUUID;
 
     @JsonIgnore
     private List<Song> songs;
 
+    @FormParam("firstname")
+    @NotEmpty
+    @Size(min=1,max=50)
     private String firstname;
+
+    @FormParam("surname")
+    @NotEmpty
+    @Size(min=1,max=50)
     private String surname;
+
+    @FormParam("tel")
+    @NotEmpty
+    @Pattern(regexp = "^+?[1-9]\\d{1,14}$\n")
     private String tel;
+
+    @FormParam("numberOfSongs")
     private Integer numberOfSongs;
 
     public Artist() {

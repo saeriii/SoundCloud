@@ -5,6 +5,9 @@ import ch.bzz.soundcloud.model.Artist;
 import ch.bzz.soundcloud.model.Genre;
 import ch.bzz.soundcloud.model.Song;
 
+import javax.validation.Valid;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Pattern;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -38,6 +41,8 @@ public class GenreService {
     @Path("read")
     @Produces(MediaType.APPLICATION_JSON)
     public Response readGenre(
+            @NotEmpty
+            @Pattern(regexp = "|[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}")
             @QueryParam("uuid") String genreUUID
     ) {
         int httpStatus = 200;
@@ -53,26 +58,16 @@ public class GenreService {
 
     /**
      * inserts a new genre
-     * @param genre
-     * @param popularity
      * @return Response
      */
     @POST
     @Path("create")
     @Produces(MediaType.TEXT_PLAIN)
     public Response insertGenre(
-            @FormParam("genre") String genre,
-            @FormParam("popularity") Integer popularity
+            @Valid @BeanParam Genre genre
     ) {
-        Genre genre1 = new Genre();
-        genre1.setGenreUUID(UUID.randomUUID().toString());
-        setAttributes(
-                genre1,
-                genre,
-                popularity
-        );
-
-        DataHandler.insertGenre(genre1);
+        genre.setGenreUUID(UUID.randomUUID().toString());
+        DataHandler.insertGenre(genre);
         return Response
                 .status(200)
                 .entity("")
@@ -81,27 +76,19 @@ public class GenreService {
 
     /**
      * updates a new artist
-     * @param genreUUID the key
-     * @param genre
-     * @param popularity
      * @return Response
      */
     @PUT
     @Path("update")
     @Produces(MediaType.TEXT_PLAIN)
     public Response updateArtist(
-            @FormParam("genreUUID") String genreUUID,
-            @FormParam("genre") String genre,
-            @FormParam("popularity") Integer popularity
+            @Valid @BeanParam Genre genre
     ) {
         int httpStatus = 200;
-        Genre genre1 = DataHandler.readGenrebyUUID(genreUUID);
-        if (genre1 != null) {
-            setAttributes(
-                    genre1,
-                    genre,
-                    popularity
-            );
+        Genre oldGenre = DataHandler.readGenrebyUUID(genre.getGenreUUID());
+        if (oldGenre != null) {
+            oldGenre.setGenre(genre.getGenre());
+            oldGenre.setPopularity(genre.getPopularity());
 
             DataHandler.updateGenre();
         } else {
@@ -122,6 +109,8 @@ public class GenreService {
     @Path("delete")
     @Produces(MediaType.TEXT_PLAIN)
     public Response deleteGenre(
+            @NotEmpty
+            @Pattern(regexp = "|[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}")
             @QueryParam("uuid") String genreUUID
     ) {
         int httpStatus = 200;

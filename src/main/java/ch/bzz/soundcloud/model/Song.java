@@ -3,6 +3,10 @@ package ch.bzz.soundcloud.model;
 import ch.bzz.soundcloud.data.DataHandler;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
+import javax.ws.rs.FormParam;
 import javax.xml.crypto.Data;
 import java.time.LocalDate;
 
@@ -12,8 +16,18 @@ import java.time.LocalDate;
 
 public class Song {
 
+    @FormParam("songUUID")
+    @Pattern(regexp = "|[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}")
     private String songUUID;
+
+    @FormParam("title")
+    @NotEmpty
+    @Size(min=1,max=50)
     private String title;
+
+    @FormParam("uploadDate")
+    @NotEmpty
+    @Pattern(regexp = "(([1-2][0-9])|([1-9])|(3[0-1])).((1[0-2])|([1-9])).[0-9]{4}\n")
     private String uploadDate;
 
     @JsonIgnore

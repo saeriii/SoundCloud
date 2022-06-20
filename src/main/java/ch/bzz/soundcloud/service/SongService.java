@@ -1,8 +1,12 @@
 package ch.bzz.soundcloud.service;
 
 import ch.bzz.soundcloud.data.DataHandler;
+import ch.bzz.soundcloud.model.Genre;
 import ch.bzz.soundcloud.model.Song;
 
+import javax.validation.Valid;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Pattern;
 import javax.ws.rs.*;
 import javax.ws.rs.core.MediaType;
 import javax.ws.rs.core.Response;
@@ -36,6 +40,8 @@ public class SongService {
     @Path("read")
     @Produces(MediaType.APPLICATION_JSON)
     public Response readSong(
+            @NotEmpty
+            @Pattern(regexp = "|[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}")
             @QueryParam("uuid") String songUUID
     ) {
         int httpStatus = 200;
@@ -51,30 +57,28 @@ public class SongService {
 
     /**
      * inserts a new song
-     * @param title
      * @param artistUUID
      * @param genreUUID
-     * @param uploadDate
      * @return Response
      */
     @POST
     @Path("create")
     @Produces(MediaType.TEXT_PLAIN)
     public Response insertSong(
-            @FormParam("title") String title,
+            @Valid @BeanParam Song song,
+
+            @NotEmpty
+            @Pattern(regexp = "|[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}")
             @FormParam("artistUUID") String artistUUID,
-            @FormParam("genreUUID") String genreUUID,
-            @FormParam("uploadDate") String uploadDate
+
+            @NotEmpty
+            @Pattern(regexp = "|[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}")
+            @FormParam("genreUUID") String genreUUID
     ) {
-        Song song = new Song();
         song.setSongUUID(UUID.randomUUID().toString());
-        setAttributes(
-                song,
-                title,
-                artistUUID,
-                genreUUID,
-                uploadDate
-        );
+        song.setArtistUUID(artistUUID);
+        song.setGenreUUID(genreUUID);
+
         DataHandler.insertSong(song);
         return Response
                 .status(200)
@@ -84,33 +88,31 @@ public class SongService {
 
     /**
      * updates a new song
-     * @param songUUID the key
-     * @param title
      * @param artistUUID
      * @param genreUUID
-     * @param uploadDate
      * @return Response
      */
     @PUT
     @Path("update")
     @Produces(MediaType.TEXT_PLAIN)
     public Response updateSong(
-            @FormParam("songUUID") String songUUID,
-            @FormParam("title") String title,
+            @Valid @BeanParam Song song,
+
+            @NotEmpty
+            @Pattern(regexp = "|[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}")
             @FormParam("artistUUID") String artistUUID,
-            @FormParam("genreUUID") String genreUUID,
-            @FormParam("uploadDate") String uploadDate
+
+            @NotEmpty
+            @Pattern(regexp = "|[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}")
+            @FormParam("genreUUID") String genreUUID
     ) {
         int httpStatus = 200;
-        Song song = DataHandler.readSongbyUUID(songUUID);
-        if (song != null) {
-            setAttributes(
-                    song,
-                    title,
-                    artistUUID,
-                    genreUUID,
-                    uploadDate
-            );
+        Song oldSong = DataHandler.readSongbyUUID(song.getSongUUID());
+        if (oldSong != null) {
+            oldSong.setTitle(song.getTitle());
+            oldSong.setArtistUUID(artistUUID);
+            oldSong.setGenreUUID(genreUUID);
+            oldSong.setUploadDate(song.getUploadDate());
 
             DataHandler.updateSong();
         } else {
@@ -132,6 +134,8 @@ public class SongService {
     @Path("delete")
     @Produces(MediaType.TEXT_PLAIN)
     public Response deleteSong(
+            @NotEmpty
+            @Pattern(regexp = "|[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}")
             @QueryParam("uuid") String songUUID
     ) {
         int httpStatus = 200;

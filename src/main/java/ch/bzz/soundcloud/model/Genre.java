@@ -1,9 +1,24 @@
 package ch.bzz.soundcloud.model;
 
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
+import javax.validation.constraints.Pattern;
+import javax.validation.constraints.Size;
+import javax.ws.rs.FormParam;
+
 public class Genre {
 
+    @FormParam("genreUUID")
+    @Pattern(regexp = "|[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}")
     private String genreUUID;
+
+    @FormParam("genre")
+    @NotEmpty
+    @Size(min=1,max=30)
     private String genre;
+
+    @FormParam("popularity")
+    @Size(min=1, max=5)
     private Integer popularity;
 
     /**
