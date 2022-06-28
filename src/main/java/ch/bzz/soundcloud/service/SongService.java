@@ -66,20 +66,18 @@ public class SongService {
     @Produces(MediaType.TEXT_PLAIN)
     public Response insertSong(
             @Valid @BeanParam Song song,
-
             @NotEmpty
             @Pattern(regexp = "|[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}")
             @FormParam("artistUUID") String artistUUID,
-
             @NotEmpty
             @Pattern(regexp = "|[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}")
             @FormParam("genreUUID") String genreUUID
     ) {
         song.setSongUUID(UUID.randomUUID().toString());
-        song.setArtistUUID(artistUUID);
-        song.setGenreUUID(genreUUID);
+            song.setArtistUUID(artistUUID);
+            song.setGenreUUID(genreUUID);
+            DataHandler.insertSong(song);
 
-        DataHandler.insertSong(song);
         return Response
                 .status(200)
                 .entity("")

@@ -3,6 +3,7 @@ package ch.bzz.soundcloud.model;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 import javax.ws.rs.FormParam;
@@ -14,8 +15,11 @@ import java.util.List;
  */
 
 public class Artist {
-    @JsonIgnore
-    private List<Song> songs;
+
+    /**
+    *@JsonIgnore
+    *private List<Song> songs;
+    */
 
     @FormParam("artistUUID")
     @Pattern(regexp = "|[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}")
@@ -33,15 +37,11 @@ public class Artist {
 
     @FormParam("tel")
     @NotEmpty
-    @Pattern(regexp = "^+?[1-9]\\d{1,14}$\n")
+    @Pattern(regexp = "^\\+?[1-9]\\d{1,14}$")
     private String tel;
 
     @FormParam("numberOfSongs")
     private Integer numberOfSongs;
-
-    public Artist() {
-        setSongs(new ArrayList<>());
-    }
 
     /**
      * gets artistUUID
@@ -59,24 +59,6 @@ public class Artist {
      */
     public void setArtistUUID(String artistUUID) {
         this.artistUUID = artistUUID;
-    }
-
-    /**
-     * gets songs
-     *
-     * @return value of songs
-     */
-    public List<Song> getSongs() {
-        return songs;
-    }
-
-    /**
-     * sets songs
-     *
-     * @param songs the value to set
-     */
-    public void setSongs(List<Song> songs) {
-        this.songs = songs;
     }
 
     /**

@@ -47,7 +47,7 @@ public final class DataHandler {
     }
 
     /**
-     * reads a Song by its uuid
+     * reads a s6ong by its uuid
      * @param songUUID
      * @return the Song (null=not found)
      */
@@ -62,9 +62,9 @@ public final class DataHandler {
     }
 
     /**
-     * inserts a new Song into the songList
+     * inserts a new song into the songList
      *
-     * @param song the Song to be saved
+     * @param song the song to be saved
      */
     public static void insertSong(Song song) {
         getSongList().add(song);
@@ -79,8 +79,8 @@ public final class DataHandler {
     }
 
     /**
-     * deletes a Song identified by the songUUID
-     * @param songUUID  the key
+     * deletes a song identified by the songUUID
+     * @param songUUID
      * @return  success=true/false
      */
     public static boolean deleteSong(String songUUID) {
@@ -105,7 +105,7 @@ public final class DataHandler {
     /**
      * reads an artist by its uuid
      * @param artistUUID
-     * @return the Artist (null=not found)
+     * @return the artist (null=not found)
      */
     public static Artist readArtistByUUID(String artistUUID) {
         Artist artist = null;
@@ -162,7 +162,7 @@ public final class DataHandler {
     /**
      * reads a genre by its uuid
      * @param genreUUID
-     * @return the Genre (null=not found)
+     * @return the genre (null=not found)
      */
     public static Genre readGenrebyUUID(String genreUUID) {
         Genre genre = null;
@@ -193,7 +193,7 @@ public final class DataHandler {
 
     /**
      * deletes a genre identified by the genreUUID
-     * @param genreUUID  the key
+     * @param genreUUID
      * @return  success=true/false
      */
     public static boolean deleteGenre(String genreUUID) {
@@ -212,10 +212,9 @@ public final class DataHandler {
      */
     private static void readSongJSON() {
         try {
+            String path = Config.getProperty("songJSON");
             byte[] jsonData = Files.readAllBytes(
-                    Paths.get(
-                            Config.getProperty("songJSON")
-                    )
+                    Paths.get(path)
             );
             ObjectMapper objectMapper = new ObjectMapper();
             Song[] songs = objectMapper.readValue(jsonData, Song[].class);
@@ -251,10 +250,9 @@ public final class DataHandler {
      */
     private static void readArtistJSON() {
         try {
+            String path = Config.getProperty("artistJSON");
             byte[] jsonData = Files.readAllBytes(
-                    Paths.get(
-                            Config.getProperty("artistJSON")
-                    )
+                    Paths.get(path)
             );
             ObjectMapper objectMapper = new ObjectMapper();
             Artist[] artists = objectMapper.readValue(jsonData, Artist[].class);
@@ -290,10 +288,9 @@ public final class DataHandler {
      */
     private static void readGenreJSON() {
         try {
+            String path = Config.getProperty("genreJSON");
             byte[] jsonData = Files.readAllBytes(
-                    Paths.get(
-                            Config.getProperty("genreJSON")
-                    )
+                    Paths.get(path)
             );
             ObjectMapper objectMapper = new ObjectMapper();
             Genre[] genres = objectMapper.readValue(jsonData, Genre[].class);
