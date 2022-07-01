@@ -1,7 +1,6 @@
 package ch.bzz.soundcloud.service;
 
 import ch.bzz.soundcloud.data.DataHandler;
-import ch.bzz.soundcloud.model.Genre;
 import ch.bzz.soundcloud.model.Song;
 
 import javax.validation.Valid;
@@ -13,6 +12,9 @@ import javax.ws.rs.core.Response;
 import java.util.List;
 import java.util.UUID;
 
+/**
+ * services for reading, adding, changing and deleting songs
+ */
 @Path("song")
 public class SongService {
 
@@ -23,7 +25,7 @@ public class SongService {
     @GET
     @Path("list")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response listSong() {
+    public Response listSongs() {
         List<Song> songList = DataHandler.readAllSongs();
         return Response
                 .status(200)
@@ -146,27 +148,6 @@ public class SongService {
                 .status(httpStatus)
                 .entity("")
                 .build();
-    }
-
-    /**
-     * sets the attributes for the song-object
-     * @param song  the song-object
-     * @param title  the title
-     * @param artistUUID  the uuid of the artist
-     * @param genreUUID  the uuid of the genre
-     * @param uploadDate  the upload date
-     */
-    private void setAttributes(
-            Song song,
-            String title,
-            String artistUUID,
-            String genreUUID,
-            String uploadDate
-    ) {
-        song.setTitle(title);
-        song.setArtistUUID(artistUUID);
-        song.setGenreUUID(genreUUID);
-        song.setUploadDate(uploadDate);
     }
 
 }

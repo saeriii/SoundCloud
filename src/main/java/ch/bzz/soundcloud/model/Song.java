@@ -7,8 +7,6 @@ import javax.validation.constraints.NotEmpty;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 import javax.ws.rs.FormParam;
-import javax.xml.crypto.Data;
-import java.time.LocalDate;
 
 /**
  * A song of an artist
@@ -27,11 +25,12 @@ public class Song {
 
     @FormParam("uploadDate")
     @NotEmpty
-    @Pattern(regexp = "^\\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$")
+    //@Pattern(regexp = "^\\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$")
     private String uploadDate;
 
     @JsonIgnore
     private Artist artist;
+
     @JsonIgnore
     private Genre genre;
 
