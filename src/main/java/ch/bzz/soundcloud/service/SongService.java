@@ -102,8 +102,8 @@ public class SongService {
         Song oldSong = DataHandler.readSongbyUUID(song.getSongUUID());
         if (oldSong != null) {
             oldSong.setTitle(song.getTitle());
-            oldSong.setGenreUUID(genreUUID);
             oldSong.setUploadDate(song.getUploadDate());
+            oldSong.setGenreUUID(genreUUID);
 
             DataHandler.updateSong();
         } else {

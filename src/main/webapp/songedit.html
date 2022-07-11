@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="author" content="Saranya Wenger"/>
+    <meta name="copyright" content="FG ICT - Bildungszentrum Zürichsee"/>
+    <meta name="project" content="SoundCloud"/>
+    <meta name="description" content="song form edit"/>
+    <title>Buch bearbeiten</title>
+    <script src="./js/songedit.js"></script>
+    <script src="./js/util.js"></script>
+</head>
+<body>
+<nav id="nav">
+    <span id="message" style="color: red;"></span>
+</nav>
+<h3>Song bearbeiten</h3>
+<form id="songeditForm" name="songedit">
+    <table>
+        <tr>
+            <td><label for="title">Songtitel</label></td>
+            <td>
+                <input id="title" name="title" type="text" size="50" minlength="1" maxlength="50" required/>
+                <input id="songUUID" name="songUUID" type="hidden"/>
+            </td>
+        </tr>
+        <tr>
+            <td><label for="uploadDate">Hochladedatum</label></td>
+            <td><input id="uploadDate" name="uploadDate" type="text"  pattern="^\d{4}\-(0[1-9]|1[012])\-(0[1-9]|[12][0-9]|3[01])$" required/></td>
+        </tr>
+        <tr>
+            <td><label for="genre">Genre</label></td>
+            <td>
+                <select id="genre" name="genreUUID" required>
+                </select>
+            </td>
+        </tr>
+    </table>
+    <table>
+        <tr>
+            <td>
+                <button id="save" type="submit">Speichern</button>
+            </td>
+            <td>
+                <button id="reset" type="reset">Zurücksetzen</button>
+            </td>
+            <td>
+                <button id="cancel" type="button">Abbruch</button>
+            </td>
+        </tr>
+    </table>
+</form>
+</body>
+</html>
