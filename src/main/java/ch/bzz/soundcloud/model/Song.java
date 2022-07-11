@@ -25,23 +25,11 @@ public class Song {
 
     @FormParam("uploadDate")
     @NotEmpty
-    //@Pattern(regexp = "^\\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$")
+    @Pattern(regexp = "/^\\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$/")
     private String uploadDate;
 
     @JsonIgnore
-    private Artist artist;
-
-    @JsonIgnore
     private Genre genre;
-
-    /**
-     * gets the artistUUID from the Artist-object
-     * @return
-     */
-    public String getArtistUUID() {
-        if (getArtist()== null) return null;
-        return getArtist().getArtistUUID();
-    }
 
     /**
      * gets the genreUUID from the Genre-object
@@ -50,20 +38,6 @@ public class Song {
     public String getGenreUUID() {
         if (getGenre()== null) return null;
         return getGenre().getGenreUUID();
-    }
-
-    /**
-     * creates an Artist-object without the songs
-     * @param artistUUID
-     */
-    public void setArtistUUID(String artistUUID) {
-        setArtist(new Artist());
-        Artist artist = DataHandler.readArtistByUUID(artistUUID);
-        getArtist().setArtistUUID(artistUUID);
-        getArtist().setFirstname(artist.getFirstname());
-        getArtist().setSurname(artist.getSurname());
-        getArtist().setTel(artist.getTel());
-        getArtist().setNumberOfSongs(artist.getNumberOfSongs());
     }
 
     /**
@@ -130,24 +104,6 @@ public class Song {
      */
     public void setUploadDate(String uploadDate) {
         this.uploadDate = uploadDate;
-    }
-
-    /**
-     * gets artist
-     *
-     * @return value of artist
-     */
-    public Artist getArtist() {
-        return artist;
-    }
-
-    /**
-     * sets artist
-     *
-     * @param artist the value to set
-     */
-    public void setArtist(Artist artist) {
-        this.artist = artist;
     }
 
     /**

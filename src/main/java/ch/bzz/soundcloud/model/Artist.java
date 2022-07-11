@@ -1,5 +1,6 @@
 package ch.bzz.soundcloud.model;
 
+import ch.bzz.soundcloud.data.DataHandler;
 import com.fasterxml.jackson.annotation.JsonIgnore;
 
 import javax.validation.constraints.NotEmpty;
@@ -15,6 +16,9 @@ import java.util.List;
  */
 
 public class Artist {
+    @JsonIgnore
+    private List<Song> songs;
+
     @FormParam("artistUUID")
     @Pattern(regexp = "|[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}")
     private String artistUUID;
@@ -37,6 +41,24 @@ public class Artist {
     @FormParam("numberOfSongs")
     @Positive
     private Integer numberOfSongs;
+
+    /**
+     * gets the songList
+     *
+     * @return value of songs
+     */
+    public List<Song> getSongList() {
+        return songs;
+    }
+
+    /**
+     * sets the song list
+     *
+     * @param songs the value to set
+     */
+    public void setSongList(List<Song> songs) {
+        this.songs = songs;
+    }
 
     /**
      * gets artistUUID
@@ -127,5 +149,40 @@ public class Artist {
     public void setNumberOfSongs(Integer numberOfSongs) {
         this.numberOfSongs = numberOfSongs;
     }
+
+    /**
+     * sets the songs from their UUIDs
+     *
+     * @param uuidList  list of song-uuids
+     */
+    public void setSongUUID(List<String> uuidList) {
+
+        this.setSongList(new ArrayList<>());
+        for (String uuid : uuidList) {
+            Song song = DataHandler.readSongbyUUID(uuid);
+            this.getSongList().add(song);
+        }
+    }
+
+    /**
+     * gets all the songs of an artist
+     * @return  all songs as comma separated string
+     */
+    @JsonIgnore
+    public String getSongs() {
+        StringBuilder songs = new StringBuilder();
+        if (this.getSongList() != null) {
+            List<String> uuidList = new ArrayList<>();
+            for (Song song : this.getSongList()) {
+                songs.append(song.getTitle()).append(", ");
+                songs.append(song.getUploadDate()).append(", ");
+            }
+
+        }
+        return (songs.length() == 0)
+                ? null
+                : (songs.substring(0, songs.length() - 2));
+    }
+
 }
 

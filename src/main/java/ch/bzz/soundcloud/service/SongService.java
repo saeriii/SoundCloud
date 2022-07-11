@@ -78,7 +78,6 @@ public class SongService {
             @FormParam("genreUUID") String genreUUID
     ) {
         song.setSongUUID(UUID.randomUUID().toString());
-        song.setArtistUUID(artistUUID);
         song.setGenreUUID(genreUUID);
 
         DataHandler.insertSong(song);
@@ -112,7 +111,6 @@ public class SongService {
         Song oldSong = DataHandler.readSongbyUUID(song.getSongUUID());
         if (oldSong != null) {
             oldSong.setTitle(song.getTitle());
-            oldSong.setArtistUUID(artistUUID);
             oldSong.setGenreUUID(genreUUID);
             oldSong.setUploadDate(song.getUploadDate());
 
