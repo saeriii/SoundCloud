@@ -212,9 +212,10 @@ public final class DataHandler {
      */
     private static void readSongJSON() {
         try {
-            String path = Config.getProperty("songJSON");
             byte[] jsonData = Files.readAllBytes(
-                    Paths.get(path)
+                    Paths.get(
+                            Config.getProperty("songJSON")
+                    )
             );
             ObjectMapper objectMapper = new ObjectMapper();
             Song[] songs = objectMapper.readValue(jsonData, Song[].class);

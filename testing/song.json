@@ -1,30 +1,26 @@
 [
   {
+    "genreUUID": "b17e62c0-3cd6-4378-97d9-5b726aa52fa3",
     "songUUID": "3247c340-c712-402e-b400-0a23a9368c97",
     "title": "Purple Hearts",
-    "uploadDate": "2022-05-13",
-    "artistUUID": "ecd86148-5341-43c6-81ed-f3f4595965dc",
-    "genreUUID": "b17e62c0-3cd6-4378-97d9-5b726aa52fa3"
+    "uploadDate": "2022-05-13"
   },
   {
+    "genreUUID": "67f164a7-be86-44c8-b9b2-f7a7e801c268",
     "songUUID": "db117daa-e295-4597-abcd-a69496797dc0",
     "title": "One in a Million",
-    "uploadDate": "1996-08-13",
-    "artistUUID": "ecd86148-5341-43c6-81ed-f3f4595965dc",
-    "genreUUID": "67f164a7-be86-44c8-b9b2-f7a7e801c268"
+    "uploadDate": "1996-08-13"
   },
   {
+    "genreUUID": "67f164a7-be86-44c8-b9b2-f7a7e801c268",
     "songUUID": "c746a291-0ef9-4b2a-8268-392b12d636bd",
     "title": "Everybody Business",
-    "uploadDate": "2020-05-08",
-    "artistUUID": "606cc4a5-8bfd-4e24-85c1-ecf6b9814712",
-    "genreUUID": "67f164a7-be86-44c8-b9b2-f7a7e801c268"
+    "uploadDate": "2020-05-08"
   },
   {
+    "genreUUID": "81cd12a6-456a-4d82-9e99-d56ff447a477",
     "songUUID": "73bd4187-a5b7-4864-be79-327bb8ed43bf",
     "title": "Put Me Thru",
-    "uploadDate": "2016-01-15",
-    "artistUUID": "06fc334d-7b02-434f-9222-6544d30d8832",
-    "genreUUID": "81cd12a6-456a-4d82-9e99-d56ff447a477"
+    "uploadDate": "2016-01-15"
   }
 ]

@@ -13,6 +13,8 @@ import javax.ws.rs.FormParam;
  */
 
 public class Song {
+    @JsonIgnore
+    private Genre genre;
 
     @FormParam("songUUID")
     @Pattern(regexp = "|[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}")
@@ -25,11 +27,8 @@ public class Song {
 
     @FormParam("uploadDate")
     @NotEmpty
-    @Pattern(regexp = "/^\\d{4}-(0[1-9]|1[0-2])-(0[1-9]|[12][0-9]|3[01])$/")
+    @Pattern(regexp = "^\\d{4}\\-(0[1-9]|1[012])\\-(0[1-9]|[12][0-9]|3[01])$")
     private String uploadDate;
-
-    @JsonIgnore
-    private Genre genre;
 
     /**
      * gets the genreUUID from the Genre-object
@@ -48,7 +47,7 @@ public class Song {
         setGenre(new Genre());
         Genre genre = DataHandler.readGenrebyUUID(genreUUID);
         getGenre().setGenreUUID(genreUUID);
-        getGenre().setGenre(genre.getGenre());
+        getGenre().setGenreName(genre.getGenreName());
         getGenre().setPopularity(genre.getPopularity());
     }
 

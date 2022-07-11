@@ -1,6 +1,7 @@
 package ch.bzz.soundcloud.service;
 
 import ch.bzz.soundcloud.data.DataHandler;
+import ch.bzz.soundcloud.model.Artist;
 import ch.bzz.soundcloud.model.Song;
 
 import javax.validation.Valid;
@@ -59,7 +60,6 @@ public class SongService {
 
     /**
      * inserts a new song
-     * @param artistUUID
      * @param genreUUID
      * @return Response
      */
@@ -68,10 +68,6 @@ public class SongService {
     @Produces(MediaType.TEXT_PLAIN)
     public Response insertSong(
             @Valid @BeanParam Song song,
-
-            @NotEmpty
-            @Pattern(regexp = "|[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}")
-            @FormParam("artistUUID") String artistUUID,
 
             @NotEmpty
             @Pattern(regexp = "|[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}")
@@ -89,7 +85,6 @@ public class SongService {
 
     /**
      * updates a new song
-     * @param artistUUID
      * @param genreUUID
      * @return Response
      */
@@ -98,10 +93,6 @@ public class SongService {
     @Produces(MediaType.TEXT_PLAIN)
     public Response updateSong(
             @Valid @BeanParam Song song,
-
-            @NotEmpty
-            @Pattern(regexp = "|[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}")
-            @FormParam("artistUUID") String artistUUID,
 
             @NotEmpty
             @Pattern(regexp = "|[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}")

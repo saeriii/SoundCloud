@@ -1,17 +1,17 @@
 [
   {
     "genreUUID" : "b17e62c0-3cd6-4378-97d9-5b726aa52fa3",
-    "genre" : "Hip-Hop",
+    "genreName" : "Hip-Hop",
     "popularity" : 5
   },
   {
     "genreUUID" : "67f164a7-be86-44c8-b9b2-f7a7e801c268",
-    "genre" : "R&B",
+    "genreName" : "R&B",
     "popularity" : 4
   },
   {
     "genreUUID" : "81cd12a6-456a-4d82-9e99-d56ff447a477",
-    "genre" : "Soul",
+    "genreName" : "Soul",
     "popularity" : 3
   }
 ]

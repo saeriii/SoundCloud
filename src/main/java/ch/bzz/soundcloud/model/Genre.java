@@ -11,10 +11,10 @@ public class Genre {
     @Pattern(regexp = "|[0-9a-fA-F]{8}-([0-9a-fA-F]{4}-){3}[0-9a-fA-F]{12}")
     private String genreUUID;
 
-    @FormParam("genre")
+    @FormParam("genreName")
     @NotEmpty
     @Size(min=1,max=30)
-    private String genre;
+    private String genreName;
 
     @FormParam("popularity")
     private Integer popularity;
@@ -38,21 +38,21 @@ public class Genre {
     }
 
     /**
-     * gets genre
+     * gets genreName
      *
-     * @return value of genre
+     * @return value of genreName
      */
-    public String getGenre() {
-        return genre;
+    public String getGenreName() {
+        return genreName;
     }
 
     /**
      * sets genre
      *
-     * @param genre the value to set
+     * @param genreName the value to set
      */
-    public void setGenre(String genre) {
-        this.genre = genre;
+    public void setGenreName(String genreName) {
+        this.genreName = genreName;
     }
 
     /**

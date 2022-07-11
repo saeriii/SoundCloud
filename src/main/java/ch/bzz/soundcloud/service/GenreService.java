@@ -1,9 +1,7 @@
 package ch.bzz.soundcloud.service;
 
 import ch.bzz.soundcloud.data.DataHandler;
-import ch.bzz.soundcloud.model.Artist;
 import ch.bzz.soundcloud.model.Genre;
-import ch.bzz.soundcloud.model.Song;
 
 import javax.validation.Valid;
 import javax.validation.constraints.NotEmpty;
@@ -87,7 +85,7 @@ public class GenreService {
         int httpStatus = 200;
         Genre oldGenre = DataHandler.readGenrebyUUID(genre.getGenreUUID());
         if (oldGenre != null) {
-            oldGenre.setGenre(genre.getGenre());
+            oldGenre.setGenreName(genre.getGenreName());
             oldGenre.setPopularity(genre.getPopularity());
 
             DataHandler.updateGenre();
@@ -121,22 +119,6 @@ public class GenreService {
                 .status(httpStatus)
                 .entity("")
                 .build();
-    }
-
-
-    /**
-     * sets the attributes for the genre-object
-     * @param genre1  the genre-object
-     * @param genre  the genre name
-     * @param popularity  the popularity
-     */
-    private void setAttributes(
-            Genre genre1,
-            String genre,
-            Integer popularity
-    ) {
-        genre1.setGenre(genre);
-        genre1.setPopularity(popularity);
     }
 
 }

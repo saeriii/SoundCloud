@@ -1,18 +1,16 @@
 package ch.bzz.soundcloud.service;
 
-        import ch.bzz.soundcloud.data.DataHandler;
-        import ch.bzz.soundcloud.model.Artist;
-        import ch.bzz.soundcloud.model.Genre;
-        import ch.bzz.soundcloud.model.Song;
+import ch.bzz.soundcloud.data.DataHandler;
+import ch.bzz.soundcloud.model.Artist;
 
-        import javax.validation.Valid;
-        import javax.validation.constraints.NotEmpty;
-        import javax.validation.constraints.Pattern;
-        import javax.ws.rs.*;
-        import javax.ws.rs.core.MediaType;
-        import javax.ws.rs.core.Response;
-        import java.util.List;
-        import java.util.UUID;
+import javax.validation.Valid;
+import javax.validation.constraints.NotEmpty;
+import javax.validation.constraints.Pattern;
+import javax.ws.rs.*;
+import javax.ws.rs.core.MediaType;
+import javax.ws.rs.core.Response;
+import java.util.List;
+import java.util.UUID;
 
 @Path("artist")
 public class ArtistService {
