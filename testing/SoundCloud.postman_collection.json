@@ -2,7 +2,8 @@
 	"info": {
 		"_postman_id": "a4b95d6e-5378-4fff-b507-4b811846d0da",
 		"name": "SoundCloud",
-		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "21120008"
 	},
 	"item": [
 		{
@@ -11,7 +12,6 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "ac63ef8f-4e55-4a2b-b52d-871f2855ee23",
 						"exec": [
 							"pm.test(\"Status test\", function () {",
 							"    pm.response.to.have.status(200);",
@@ -47,7 +47,6 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "2db42005-ecd3-4b12-ab92-d0afb857745a",
 						"exec": [
 							"pm.test(\"Status test\", function () {",
 							"    pm.response.to.have.status(200);",
@@ -78,48 +77,11 @@
 			"response": []
 		},
 		{
-			"name": "1.1.2 list all genres",
-			"event": [
-				{
-					"listen": "test",
-					"script": {
-						"id": "63422c4c-d156-43fb-975c-036b0fc83b09",
-						"exec": [
-							"pm.test(\"Status test\", function () {",
-							"    pm.response.to.have.status(200);",
-							"});"
-						],
-						"type": "text/javascript"
-					}
-				}
-			],
-			"request": {
-				"method": "GET",
-				"header": [],
-				"url": {
-					"raw": "http://localhost:8080/SoundCloud-1.0/resource/genre/list",
-					"protocol": "http",
-					"host": [
-						"localhost"
-					],
-					"port": "8080",
-					"path": [
-						"SoundCloud-1.0",
-						"resource",
-						"genre",
-						"list"
-					]
-				}
-			},
-			"response": []
-		},
-		{
 			"name": "1.1.1 list all artists",
 			"event": [
 				{
 					"listen": "test",
 					"script": {
-						"id": "79bcb4e3-e81c-4672-badf-d7a5df30083f",
 						"exec": [
 							"pm.test(\"Status test\", function () {",
 							"    pm.response.to.have.status(200);",
@@ -150,12 +112,46 @@
 			"response": []
 		},
 		{
+			"name": "1.1.2 list all genres",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/SoundCloud-1.0/resource/genre/list",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"SoundCloud-1.0",
+						"resource",
+						"genre",
+						"list"
+					]
+				}
+			},
+			"response": []
+		},
+		{
 			"name": "1.2.0 read song",
 			"event": [
 				{
 					"listen": "test",
 					"script": {
-						"id": "35c0a7fe-1abd-4b15-9e0a-5bd3ba8662a0",
 						"exec": [
 							"pm.test(\"Status test\", function () {",
 							"    pm.response.to.have.status(200);",
@@ -197,7 +193,6 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "009938c7-b19e-4e95-a96f-8847e7368631",
 						"exec": [
 							"pm.test(\"Status test\", function () {",
 							"    pm.response.to.have.status(200);",
@@ -211,7 +206,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/SoundCloud-1.0/resource/genre/read?uuid=cab86148-5341-43c6-sfed-f3f459591hip",
+					"raw": "http://localhost:8080/SoundCloud-1.0/resource/genre/read?uuid=b17e62c0-3cd6-4378-97d9-5b726aa52fa3",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -226,7 +221,7 @@
 					"query": [
 						{
 							"key": "uuid",
-							"value": "cab86148-5341-43c6-sfed-f3f459591hip"
+							"value": "b17e62c0-3cd6-4378-97d9-5b726aa52fa3"
 						}
 					]
 				}
@@ -239,7 +234,6 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "a5dad104-d6b7-4b60-9d2a-9b63e15d4057",
 						"exec": [
 							"pm.test(\"Status test\", function () {",
 							"    pm.response.to.have.status(200);",
@@ -253,7 +247,7 @@
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/SoundCloud-1.0/resource/artist/read?uuid=ecd86148-5341-43c6-81ed-f3f4595965dc",
+					"raw": "http://localhost:8080/SoundCloud-1.0/resource/artist/read?uuid=db117daa-e295-4597-abcd-a69496797dc0",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -268,7 +262,7 @@
 					"query": [
 						{
 							"key": "uuid",
-							"value": "ecd86148-5341-43c6-81ed-f3f4595965dc"
+							"value": "db117daa-e295-4597-abcd-a69496797dc0"
 						}
 					]
 				}
@@ -281,7 +275,6 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "ae6b4bdd-0a11-451a-8f11-5eacfdc060ac",
 						"exec": [
 							"pm.test(\"Status test\", function () {",
 							"    pm.response.to.have.status(400);",
@@ -323,7 +316,6 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "503233de-a1d1-499e-9b82-bf84a9cb495c",
 						"exec": [
 							"pm.test(\"Status test\", function () {",
 							"    pm.response.to.have.status(400);",
@@ -365,7 +357,6 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "681a32a1-961d-499b-9a19-97e77c8b23ce",
 						"exec": [
 							"pm.test(\"Status test\", function () {",
 							"    pm.response.to.have.status(400);",
@@ -407,7 +398,6 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "0ff7189b-b6ac-42b4-8a22-e80292144e45",
 						"exec": [
 							"pm.test(\"Status test\", function () {",
 							"    pm.response.to.have.status(400);",
@@ -443,7 +433,6 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "60c71ab5-578f-44bf-b1eb-a19835ac5ce2",
 						"exec": [
 							"pm.test(\"Status test\", function () {",
 							"    pm.response.to.have.status(400);",
@@ -479,7 +468,6 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "0cc61716-5f02-4be0-999b-35debf62ecd3",
 						"exec": [
 							"pm.test(\"Status test\", function () {",
 							"    pm.response.to.have.status(400);",
@@ -515,7 +503,6 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "fcc0bb9f-4e61-4145-9050-b0f5fcb09e66",
 						"exec": [
 							"pm.test(\"Status test\", function () {",
 							"    pm.response.to.have.status(200);",
@@ -532,18 +519,13 @@
 					"mode": "urlencoded",
 					"urlencoded": [
 						{
+							"key": "genreUUID",
+							"value": "67f164a7-be86-44c8-b9b2-f7a7e801c268",
+							"type": "default"
+						},
+						{
 							"key": "title",
 							"value": "Can I",
-							"type": "default"
-						},
-						{
-							"key": "artistUUID",
-							"value": "c746a291-0ef9-4b2a-8268-392b12d636bd",
-							"type": "default"
-						},
-						{
-							"key": "genreUUID",
-							"value": "abc86148-5341-43c6-sfed-f3f459591rnb",
 							"type": "default"
 						},
 						{
@@ -551,8 +533,7 @@
 							"value": "2020-05-08",
 							"type": "default"
 						}
-					],
-					"options": {}
+					]
 				},
 				"url": {
 					"raw": "http://localhost:8080/SoundCloud-1.0/resource/song/create",
@@ -577,7 +558,6 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "05e7d70b-06d1-4236-8e41-d77807275526",
 						"exec": [
 							"pm.test(\"Status test\", function () {",
 							"    pm.response.to.have.status(400);",
@@ -613,8 +593,7 @@
 							"value": "2020-05-08",
 							"type": "default"
 						}
-					],
-					"options": {}
+					]
 				},
 				"url": {
 					"raw": "http://localhost:8080/SoundCloud-1.0/resource/song/create",
@@ -639,7 +618,6 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "7e7f93f9-31c7-4645-9ea8-f3e5ef2e305b",
 						"exec": [
 							"pm.test(\"Status test\", function () {",
 							"    pm.response.to.have.status(200);",
@@ -667,16 +645,15 @@
 						},
 						{
 							"key": "tel",
-							"value": "+1(425) 876-8844",
+							"value": "+41796044814",
 							"type": "default"
 						},
 						{
 							"key": "numberOfSongs",
-							"value": "34 ",
+							"value": "34",
 							"type": "default"
 						}
-					],
-					"options": {}
+					]
 				},
 				"url": {
 					"raw": "http://localhost:8080/SoundCloud-1.0/resource/artist/create",
@@ -701,7 +678,6 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "7bcf9131-379e-4737-aec2-c5c567dbeec3",
 						"exec": [
 							"pm.test(\"Status test\", function () {",
 							"    pm.response.to.have.status(400);",
@@ -734,11 +710,10 @@
 						},
 						{
 							"key": "numberOfSongs",
-							"value": "34 ",
+							"value": "34",
 							"type": "default"
 						}
-					],
-					"options": {}
+					]
 				},
 				"url": {
 					"raw": "http://localhost:8080/SoundCloud-1.0/resource/artist/create",
@@ -763,7 +738,6 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "8925d2ef-42be-49e2-acb1-3dcd26a511c9",
 						"exec": [
 							"pm.test(\"Status test\", function () {",
 							"    pm.response.to.have.status(200);",
@@ -780,7 +754,7 @@
 					"mode": "urlencoded",
 					"urlencoded": [
 						{
-							"key": "genre",
+							"key": "genreName",
 							"value": "Pop",
 							"type": "default"
 						},
@@ -789,8 +763,7 @@
 							"value": "5",
 							"type": "default"
 						}
-					],
-					"options": {}
+					]
 				},
 				"url": {
 					"raw": "http://localhost:8080/SoundCloud-1.0/resource/genre/create",
@@ -810,12 +783,11 @@
 			"response": []
 		},
 		{
-			"name": "2.1.2 insert genre genre empty",
+			"name": "2.1.2 insert genre genreName empty",
 			"event": [
 				{
 					"listen": "test",
 					"script": {
-						"id": "b8843b19-9cb9-430d-9780-c1f8b05636b1",
 						"exec": [
 							"pm.test(\"Status test\", function () {",
 							"    pm.response.to.have.status(400);",
@@ -841,8 +813,7 @@
 							"value": "5",
 							"type": "default"
 						}
-					],
-					"options": {}
+					]
 				},
 				"url": {
 					"raw": "http://localhost:8080/SoundCloud-1.0/resource/genre/create",
@@ -867,7 +838,6 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "876a5fad-5f17-4609-a46c-ae774208ce65",
 						"exec": [
 							"pm.test(\"Status test\", function () {",
 							"    pm.response.to.have.status(200);",
@@ -884,6 +854,11 @@
 					"mode": "urlencoded",
 					"urlencoded": [
 						{
+							"key": "genreUUID",
+							"value": "67f164a7-be86-44c8-b9b2-f7a7e801c268",
+							"type": "default"
+						},
+						{
 							"key": "songUUID",
 							"value": "c746a291-0ef9-4b2a-8268-392b12d636bd",
 							"type": "text"
@@ -894,22 +869,11 @@
 							"type": "default"
 						},
 						{
-							"key": "artistUUID",
-							"value": "c746a291-0ef9-4b2a-8268-392b12d636bd",
-							"type": "default"
-						},
-						{
-							"key": "genreUUID",
-							"value": "abc86148-5341-43c6-sfed-f3f459591rnb",
-							"type": "default"
-						},
-						{
 							"key": "uploadDate",
 							"value": "2020-05-08",
 							"type": "default"
 						}
-					],
-					"options": {}
+					]
 				},
 				"url": {
 					"raw": "http://localhost:8080/SoundCloud-1.0/resource/song/update",
@@ -934,7 +898,6 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "05c9414c-a92e-492f-a4d3-0b3bc0320ba8",
 						"exec": [
 							"pm.test(\"Status test\", function () {",
 							"    pm.response.to.have.status(400);",
@@ -975,8 +938,7 @@
 							"value": "5-10-2020",
 							"type": "default"
 						}
-					],
-					"options": {}
+					]
 				},
 				"url": {
 					"raw": "http://localhost:8080/SoundCloud-1.0/resource/song/update",
@@ -1001,7 +963,6 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "26de91a7-d35d-4381-8bda-41cb241bbcb2",
 						"exec": [
 							"pm.test(\"Status test\", function () {",
 							"    pm.response.to.have.status(200);",
@@ -1034,7 +995,7 @@
 						},
 						{
 							"key": "tel",
-							"value": "+1(510) 692-4417",
+							"value": "+15106924417",
 							"type": "default"
 						},
 						{
@@ -1042,8 +1003,7 @@
 							"value": "70",
 							"type": "default"
 						}
-					],
-					"options": {}
+					]
 				},
 				"url": {
 					"raw": "http://localhost:8080/SoundCloud-1.0/resource/artist/update",
@@ -1068,7 +1028,6 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "8d5d5ec9-2cb0-42e9-bb47-469c11428c9a",
 						"exec": [
 							"pm.test(\"Status test\", function () {",
 							"    pm.response.to.have.status(400);",
@@ -1109,8 +1068,7 @@
 							"value": "70",
 							"type": "default"
 						}
-					],
-					"options": {}
+					]
 				},
 				"url": {
 					"raw": "http://localhost:8080/SoundCloud-1.0/resource/artist/update",
@@ -1135,7 +1093,6 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "d11fe431-2d40-4c65-96e3-81d9294fd210",
 						"exec": [
 							"pm.test(\"Status test\", function () {",
 							"    pm.response.to.have.status(200);",
@@ -1153,11 +1110,11 @@
 					"urlencoded": [
 						{
 							"key": "genreUUID",
-							"value": "abc86148-5341-43c6-sfed-f3f459591rnb",
+							"value": "67f164a7-be86-44c8-b9b2-f7a7e801c268",
 							"type": "text"
 						},
 						{
-							"key": "genre",
+							"key": "genreName",
 							"value": "RnB",
 							"type": "default"
 						},
@@ -1166,8 +1123,7 @@
 							"value": "5",
 							"type": "default"
 						}
-					],
-					"options": {}
+					]
 				},
 				"url": {
 					"raw": "http://localhost:8080/SoundCloud-1.0/resource/genre/update",
@@ -1187,12 +1143,11 @@
 			"response": []
 		},
 		{
-			"name": "3.1.2 update genre genre too long",
+			"name": "3.1.2 update genre genreName too long",
 			"event": [
 				{
 					"listen": "test",
 					"script": {
-						"id": "1b61e29e-c003-442d-8dd7-c64774778d45",
 						"exec": [
 							"pm.test(\"Status test\", function () {",
 							"    pm.response.to.have.status(400);",
@@ -1210,7 +1165,7 @@
 					"urlencoded": [
 						{
 							"key": "genreUUID",
-							"value": "abc86148-5341-43c6-sfed-f3f459591rnb",
+							"value": "67f164a7-be86-44c8-b9b2-f7a7e801c268",
 							"type": "text"
 						},
 						{
@@ -1223,8 +1178,7 @@
 							"value": "5",
 							"type": "default"
 						}
-					],
-					"options": {}
+					]
 				},
 				"url": {
 					"raw": "http://localhost:8080/SoundCloud-1.0/resource/genre/update",
@@ -1249,7 +1203,6 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "821598f5-8755-45de-864a-5fe0659324ee",
 						"exec": [
 							"pm.test(\"Status test\", function () {",
 							"    pm.response.to.have.status(200);",
@@ -1291,7 +1244,6 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "6d342bf2-f4f4-4a99-b478-f45de6a52ea7",
 						"exec": [
 							"pm.test(\"Status test\", function () {",
 							"    pm.response.to.have.status(200);",
@@ -1305,7 +1257,7 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/SoundCloud-1.0/resource/artist/delete?uuid=ecd86148-5341-43c6-81ed-f3f4595965dc",
+					"raw": "http://localhost:8080/SoundCloud-1.0/resource/artist/delete?uuid=db117daa-e295-4597-abcd-a69496797dc0",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -1320,7 +1272,7 @@
 					"query": [
 						{
 							"key": "uuid",
-							"value": "ecd86148-5341-43c6-81ed-f3f4595965dc"
+							"value": "db117daa-e295-4597-abcd-a69496797dc0"
 						}
 					]
 				}
@@ -1333,7 +1285,6 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "dbe4ed0f-4a19-4702-b53b-370b058ec8c9",
 						"exec": [
 							"pm.test(\"Status test\", function () {",
 							"    pm.response.to.have.status(200);",
@@ -1347,7 +1298,7 @@
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:8080/SoundCloud-1.0/resource/genre/delete?uuid=cab86148-5341-43c6-sfed-f3f459591hip",
+					"raw": "http://localhost:8080/SoundCloud-1.0/resource/genre/delete?uuid=b17e62c0-3cd6-4378-97d9-5b726aa52fa3",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -1362,7 +1313,7 @@
 					"query": [
 						{
 							"key": "uuid",
-							"value": "cab86148-5341-43c6-sfed-f3f459591hip"
+							"value": "b17e62c0-3cd6-4378-97d9-5b726aa52fa3"
 						}
 					]
 				}
@@ -1375,7 +1326,6 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "55027baa-75c7-4c8c-8eef-063e37b7d86b",
 						"exec": [
 							"pm.test(\"Status test\", function () {",
 							"    pm.response.to.have.status(400);",
@@ -1417,7 +1367,6 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "4a5472b4-39c1-4c79-bd58-59320ae49d21",
 						"exec": [
 							"pm.test(\"Status test\", function () {",
 							"    pm.response.to.have.status(400);",
@@ -1459,7 +1408,6 @@
 				{
 					"listen": "test",
 					"script": {
-						"id": "8197b23c-2d07-4b9a-a29d-7d9a21b9667e",
 						"exec": [
 							"pm.test(\"Status test\", function () {",
 							"    pm.response.to.have.status(400);",
@@ -1494,7 +1442,141 @@
 				}
 			},
 			"response": []
+		},
+		{
+			"name": "5.1 Login",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "username",
+							"value": "saeri",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "geheim",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/SoundCloud-1.0/resource/user/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"SoundCloud-1.0",
+						"resource",
+						"user",
+						"login"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "5.1 Logout",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(200);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"url": {
+					"raw": "http://localhost:8080/SoundCloud-1.0/resource/user/logout",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"SoundCloud-1.0",
+						"resource",
+						"user",
+						"logout"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "5.1 Login failed",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status test\", function () {",
+							"    pm.response.to.have.status(404);",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "username",
+							"value": "saeriii",
+							"type": "text"
+						},
+						{
+							"key": "password",
+							"value": "geheim",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8080/SoundCloud-1.0/resource/user/login",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8080",
+					"path": [
+						"SoundCloud-1.0",
+						"resource",
+						"user",
+						"login"
+					]
+				}
+			},
+			"response": []
 		}
-	],
-	"protocolProfileBehavior": {}
+	]
 }
