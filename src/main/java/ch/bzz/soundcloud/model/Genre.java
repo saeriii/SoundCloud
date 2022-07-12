@@ -5,6 +5,10 @@ import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 import javax.ws.rs.FormParam;
 
+/**
+ * The genre of a song
+ */
+
 public class Genre {
 
     @FormParam("genreUUID")

@@ -43,7 +43,7 @@ function showSonglist(data) {
         button.innerHTML = "Löschen";
         button.type = "button";
         button.name = "deleteSong";
-        button.setAttribute("data-songuuid", song.songUUID);0
+        button.setAttribute("data-songuuid", song.songUUID);
         button.addEventListener("click", deleteSong);
 
         row.insertCell(-1).appendChild(button);
