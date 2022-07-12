@@ -5,35 +5,28 @@
     <meta name="author" content="Saranya Wenger"/>
     <meta name="copyright" content="FG ICT - Bildungszentrum Zürichsee"/>
     <meta name="project" content="SoundCloud"/>
-    <meta name="description" content="song form edit"/>
-    <title>Song bearbeiten</title>
-    <script src="./js/songedit.js"></script>
+    <meta name="description" content="genre form edit"/>
+    <title>Genre bearbeiten</title>
+    <script src="./js/genreedit.js"></script>
     <script src="./js/util.js"></script>
 </head>
 <body>
 <nav id="nav">
     <span id="message" style="color: red;"></span>
 </nav>
-<h3>Song bearbeiten</h3>
-<form id="songeditForm" name="songedit">
+<h3>Genre bearbeiten</h3>
+<form id="genreeditForm" name="genreedit">
     <table>
         <tr>
-            <td><label for="title">Songtitel</label></td>
+            <td><label for="genreName">Genre</label></td>
             <td>
-                <input id="title" name="title" type="text" size="50" minlength="1" maxlength="50" required/>
-                <input id="songUUID" name="songUUID" type="hidden"/>
+                <input id="genreName" name="genreName" type="text" size="30" minlength="1" maxlength="30" required/>
+                <input id="genreUUID" name="genreUUID" type="hidden"/>
             </td>
         </tr>
         <tr>
-            <td><label for="uploadDate">Hochladedatum</label></td>
-            <td><input id="uploadDate" name="uploadDate" type="text"  pattern="^\d{4}\-(0[1-9]|1[012])\-(0[1-9]|[12][0-9]|3[01])$" required/></td>
-        </tr>
-        <tr>
-            <td><label for="genre">Genre</label></td>
-            <td>
-                <select id="genre" name="genreUUID" required>
-                </select>
-            </td>
+            <td><label for="popularity">Popularity</label></td>
+            <td><input id="popularity" name="popularity" type="number" min="0" max="5"></td>
         </tr>
     </table>
     <table>

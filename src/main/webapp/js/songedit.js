@@ -121,7 +121,7 @@ function showGenres(data) {
 }
 
 /**
- * redirects to the bookshelf
+ * redirects to the soundcloud.html
  * @param event  the click-event
  */
 function cancelEdit(event) {
