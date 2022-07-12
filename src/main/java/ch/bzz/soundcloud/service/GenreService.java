@@ -22,10 +22,19 @@ public class GenreService {
     @GET
     @Path("list")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response listGenre() {
-        List<Genre> genre = DataHandler.readAllGenres();
+    public Response listGenre(
+            @CookieParam("userRole") String userRole
+    ) {
+        List<Genre> genre = null;
+        int httpStatus;
+        if (userRole == null || userRole.equals("guest")) {
+            httpStatus = 403;
+        } else {
+            httpStatus = 200;
+        }
+        genre = DataHandler.readAllGenres();
         return Response
-                .status(200)
+                .status(httpStatus)
                 .entity(genre)
                 .build();
     }

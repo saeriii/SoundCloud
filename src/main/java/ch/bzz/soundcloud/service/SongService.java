@@ -26,11 +26,21 @@ public class SongService {
     @GET
     @Path("list")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response listSongs() {
-        List<Song> songList = DataHandler.readAllSongs();
+    public Response listSongs(
+            @CookieParam("userRole") String userRole
+    ) {
+        List<Song> songList = null;
+        int httpStatus;
+        if (userRole == null || userRole.equals("guest")) {
+            httpStatus = 403;
+        } else {
+            httpStatus = 200;
+        }
+        songList = DataHandler.readAllSongs();
         return Response
                 .status(200)
                 .entity(songList)
+                .status(httpStatus)
                 .build();
     }
 

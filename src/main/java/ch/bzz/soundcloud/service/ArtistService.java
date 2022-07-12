@@ -22,11 +22,21 @@ public class ArtistService {
     @GET
     @Path("list")
     @Produces(MediaType.APPLICATION_JSON)
-    public Response listArtists() {
-        List<Artist> artistList = DataHandler.readAllArtists();
+    public Response listArtists(
+            @CookieParam("userRole") String userRole
+    ) {
+        List<Artist> artistList = null;
+        int httpStatus;
+        if (userRole == null || userRole.equals("guest")) {
+            httpStatus = 403;
+        } else {
+            httpStatus = 200;
+        }
+        artistList = DataHandler.readAllArtists();
         return Response
                 .status(200)
                 .entity(artistList)
+                .status(httpStatus)
                 .build();
     }
 
