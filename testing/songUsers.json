@@ -1,0 +1,14 @@
+[
+  {
+    "userUUID" : "132183b7-9eea-44b1-84cb-e8fba1a489d5",
+    "username" : "saeri",
+    "role" : "admin",
+    "password" : "geheim"
+  },
+  {
+    "userUUID": "eaa4d376-d124-47a3-af9c-2b479721e32f",
+    "username": "muster",
+    "role": "user",
+    "password": "passwort"
+  }
+]

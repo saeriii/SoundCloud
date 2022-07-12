@@ -31,6 +31,7 @@ public class Config extends Application {
         providers.add(ArtistService.class);
         providers.add(SongService.class);
         providers.add(GenreService.class);
+        providers.add(UserService.class);
         return providers;
     }
 

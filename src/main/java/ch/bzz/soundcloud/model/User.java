@@ -12,7 +12,6 @@ public class User {
     private String username;
     private String password;
     private String role;
-    private List<String> words;
 
     public User() {
         setUsername("guest");
@@ -49,14 +48,6 @@ public class User {
 
     public void setRole(String role) {
         this.role = role;
-    }
-
-    public List<String> getWords() {
-        return words;
-    }
-
-    public void setWords(List<String> words) {
-        this.words = words;
     }
 
 }
