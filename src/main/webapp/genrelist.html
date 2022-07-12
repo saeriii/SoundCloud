@@ -1,10 +1,34 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="de">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
+    <meta name="author" content="Saranya Wenger"/>
+    <meta name="copyright" content="FG ICT - Bildungszentrum Zürichsee"/>
+    <meta name="project" content="SoundCloud"/>
+    <meta name="description" content="soundcloud genre list table"/>
+    <title>Genreliste</title>
+    <script src="./js/genrelist.js"></script>
 </head>
 <body>
+<nav id="nav">
+    <span id="message" style="color: red;"></span>
+</nav>
+<h3>Genreliste</h3>
+<form id="shelfForm">
+    <table id="soundcloud">
+        <thead>
+        <tr>
+            <th>Genre</th>
+            <th>Popularity</th>
+        </tr>
+        </thead>
+        <tbody id="genrelist">
 
+        </tbody>
+    </table>
+    <p>
+        <a href="./genreedit.html">Neues Genre</a>
+    </p>
+</form>
 </body>
 </html>

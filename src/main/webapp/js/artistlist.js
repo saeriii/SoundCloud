@@ -44,7 +44,7 @@ function showArtistlist(data) {
         button.innerHTML = "Löschen";
         button.type = "button";
         button.name = "deleteArtist";
-        button.setAttribute("data-artistuuid", artist.artistUUID);0
+        button.setAttribute("data-artistuuid", artist.artistUUID);
         button.addEventListener("click", deleteArtist);
 
         row.insertCell(-1).appendChild(button);
